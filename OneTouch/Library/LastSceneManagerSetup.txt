@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/jump.unity
-=======
-- path: Assets/Scenes/Main.unity
->>>>>>> d8b57698c669a9300c3d6ab52c8dd0e81b015003
+- path: Assets/Scenes/games.unity
   isLoaded: 1
   isActive: 1
