@@ -80,7 +80,8 @@
   <ItemGroup>
     <Compile Include="Assets\Resources\XXX\ResourcesX\Sounds\Play\Units\EffectUnit.cs" />
     <Compile Include="Assets\Scripts\AnimationsManager.cs" />
-    <Compile Include="Assets\Scripts\Jump.cs" />
+    <Compile Include="Assets\Scripts\FarJumpController.cs" />
+    <Compile Include="Assets\Scripts\JumpControll.cs" />
     <Compile Include="Assets\Scripts\SceneManageMe.cs" />
     <Compile Include="Assets\Scripts\setting.cs" />
   </ItemGroup>
