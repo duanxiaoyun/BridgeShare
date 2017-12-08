@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,15 @@ using UnityEngine.UI;
 public class FarJumpController : MonoBehaviour {
 
     public Slider sliderBar;
-    public Text ScoreUI;
+    //public Text ScoreUI;
 
-    private float timer=10.0f;
+    public Sprite[] numbers;
+
+    int[] nums = new int[2];
+
+    public GameObject TimeNum;
+
+    private float timer = 30.0f;
     private bool isJump = false;
 
     private Rigidbody2D rigidBody;
@@ -24,10 +31,8 @@ public class FarJumpController : MonoBehaviour {
         anim = this.GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
 
-        anim.SetBool("isAlive", true);
+        //ScoreUI.text = timer.ToString();
 
-        ScoreUI.text = timer.ToString();
-       
     }
 
     public void Jump()
@@ -44,18 +49,23 @@ public class FarJumpController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Debug.Log(jumpForce);
-
         sliderBar.value = jumpForce;
 
         if (timer >= 0.1f)
         {
             timer -= Time.deltaTime;
-            ScoreUI.text = timer.ToString("0.0");
+            //ScoreUI.text = timer.ToString("0.0");
+        
+            for (int i = 0; i< 2; i++)
+            {
+                nums[0] = Convert.ToInt32(timer.ToString("0.0").Split('.')[0]) / 10;
+                nums[1] = Convert.ToInt32(timer.ToString("0.0").Split('.')[0]) % 10;
+                TimeNum.transform.GetChild(i).GetComponent<Image>().sprite = numbers[nums[i]];
+            }
         }
         else if (timer >= 0.0f && timer<=0.1f)
         {
-            ScoreUI.text = "Jump".ToString();
+            //ScoreUI.text = "Jump".ToString();
         }
 
         if (timer < 0.4f && timer >= 0.1f)
