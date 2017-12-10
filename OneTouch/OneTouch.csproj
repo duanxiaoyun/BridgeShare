@@ -80,13 +80,13 @@
   <ItemGroup>
     <Compile Include="Assets\Resources\XXX\ResourcesX\Sounds\Play\Units\EffectUnit.cs" />
     <Compile Include="Assets\Scripts\FarJumpController.cs" />
-    <Compile Include="Assets\Scripts\GameManagers.cs" />
     <Compile Include="Assets\Scripts\GameUnit.cs" />
     <Compile Include="Assets\Scripts\JumpControll.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\Scripts\SceneManageMe.cs" />
+    <Compile Include="Assets\Scripts\Scenes_And_UI.cs" />
     <Compile Include="Assets\Scripts\setting.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

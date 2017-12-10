@@ -20,10 +20,10 @@ public class JumpControll : MonoBehaviour
     private GameObject[] NotePrefabsEffs;
 
     int noteTimer = 5;
+    GameObject notelevel;
+
     [SerializeField]
-    private Image notelevel;
-    [SerializeField]
-    private Sprite[] NoteLevels;
+    private GameObject[] NoteLevels;
 
     GameObject notes;
     GameObject notesEff;
@@ -55,7 +55,7 @@ public class JumpControll : MonoBehaviour
 
     private void Awake()
     {
-        GameManagers.Instance.JumpControll= this;
+        PlayerManager.Instance.JumpControll= this;
     }
 
         // Use this for initialization
@@ -70,14 +70,14 @@ public class JumpControll : MonoBehaviour
         Update();
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
         Notetimer += Time.deltaTime;
 
         PlayerHpUI.text = PlayerHp.ToString();
+
+        PlayerHpUI.GetComponentInParent<Slider>().value = PlayerHp / 1000.0f;
 
         if (Notetimer >= 2)
         {
@@ -106,25 +106,26 @@ public class JumpControll : MonoBehaviour
             notes.GetComponent<Button>().onClick.AddListener(delegate ()
             {
                 Destroy(notes);
-                isJump = true;
+
                 Playeranim.SetTrigger("Jump");
 
                 //notes 爆炸效果
                 notesEff = Instantiate(NotePrefabsEffs[noteindex], point, NotePrefab.transform.rotation) as GameObject;
-                Destroy(notesEff, 2);
-                //notelevel.GetComponent<Image>().sprite = Instantiate(NoteLevels[4], point, NotePrefab.transform.rotation) as Sprite;
-                //notelevel.transform.position = point;
+                Destroy(notesEff, 1);
+
+                GameObject NoteLevelPrefab = NoteLevels[0];
+
+                notelevel = Instantiate(NoteLevelPrefab, new Vector2(point.x,point.y+200), NoteLevelPrefab.transform.rotation) as GameObject;
+                notelevel.transform.SetParent(FindObjectOfType<Canvas>().transform);
+
+                //1秒销毁预制体
+                Destroy(notelevel, 0.5f);
+
             });
 
             //五秒销毁预制体
             Destroy(notes, noteTimer);
-            //timer -= Time.deltaTime;
-            //noteTimer = Convert.ToInt32(timer.ToString("0.0").Split('.')[0]);   
-            //if (noteTimer == 0)
-            //{
-            //    notelevel.GetComponent<Image>().sprite = Instantiate(NoteLevels[4], point, NotePrefab.transform.rotation) as Sprite;
-            //    notelevel.transform.position = point;
-            //}
+       
         }
 
         if (timer >= 0.1f)
@@ -159,13 +160,23 @@ public class JumpControll : MonoBehaviour
 
     private void HandleInput()
     {
-        if (!isJump)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider.tag == "bg")
             {
                 isMiss = true;
+                PlayerHp -= 10;
+                //and do what you want
             }
-        } 
+            else 
+            {
+                //Debug.Log("Target Position: " + Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 200.0f)));
+            }
+        }
 
     }
+
+
 }

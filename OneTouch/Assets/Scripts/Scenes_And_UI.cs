@@ -2,12 +2,18 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class SceneManageMe : MonoBehaviour {
+public class Scenes_And_UI : MonoBehaviour {
 
-    public GameObject Pause;
+    [SerializeField]
+    private GameObject Pause;
 
-	// Update is called once per frame
-	void Update () {
+    private void Awake()
+    {
+        UIManager.Instance.Scenes_And_UI = this;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
