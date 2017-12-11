@@ -62,12 +62,6 @@ public class JumpControll : MonoBehaviour
         void Start ()
     {
         Playeranim = GetComponent<Animator>();
-        Destroy(StartEffect,4f);//游戏开始特效
-    }
-    private IEnumerator ShowA()
-    {
-        yield return new WaitForSeconds(5);//游戏5秒后再开始
-        Update();
     }
 
     // Update is called once per frame
@@ -83,7 +77,7 @@ public class JumpControll : MonoBehaviour
         {
             Notetimer = 0;
 
-            //找到预制体
+            //指定随机预制体
             int noteindex = UnityEngine.Random.Range(0, 4);
 
             GameObject NotePrefab = NotePrefabs[noteindex];
@@ -98,34 +92,46 @@ public class JumpControll : MonoBehaviour
 
             Vector2 point = new Vector2(x, y);
 
-            //生成预制体
+            //在指定范围生成note预制体
             notes = Instantiate(NotePrefab, point, NotePrefab.transform.rotation) as GameObject;
             notes.transform.SetParent(FindObjectOfType<Canvas>().transform);
+
+            //获取note组件
+            if (notes != null)
+            {
+                TimeCount _TimeCountScript= notes.AddComponent<TimeCount>();
+            }
 
             //点击note响应事件
             notes.GetComponent<Button>().onClick.AddListener(delegate ()
             {
-                Destroy(notes);
 
                 Playeranim.SetTrigger("Jump");
 
+                Notetimer += notes.GetComponent<TimeCount>()._TimeCount;
+                
+                GameObject NoteLevelPrefab = NoteLevels[Convert.ToUInt32(Notetimer.ToString().Split('.')[0])];
+
                 //notes 爆炸效果
                 notesEff = Instantiate(NotePrefabsEffs[noteindex], point, NotePrefab.transform.rotation) as GameObject;
-                Destroy(notesEff, 1);
+                
+                //删除note
+                Destroy(notes,0.0f);
 
-                GameObject NoteLevelPrefab = NoteLevels[0];
+                //删除note爆炸
+                Destroy(notesEff, 1.0f);
 
-                notelevel = Instantiate(NoteLevelPrefab, new Vector2(point.x,point.y+200), NoteLevelPrefab.transform.rotation) as GameObject;
+                //生成notelevel
+                notelevel = Instantiate(NoteLevelPrefab, new Vector2(point.x, point.y + 200), NoteLevelPrefab.transform.rotation) as GameObject;
                 notelevel.transform.SetParent(FindObjectOfType<Canvas>().transform);
 
-                //1秒销毁预制体
+                //销毁notelevel预制体
                 Destroy(notelevel, 0.5f);
-
             });
 
             //五秒销毁预制体
-            Destroy(notes, noteTimer);
-       
+            Destroy(notes, 5);
+
         }
 
         if (timer >= 0.1f)
@@ -143,7 +149,6 @@ public class JumpControll : MonoBehaviour
         HandleInput();
         Miss();
         ResetValues();
-
     }
 
     private void Miss()
@@ -168,7 +173,6 @@ public class JumpControll : MonoBehaviour
             {
                 isMiss = true;
                 PlayerHp -= 10;
-                //and do what you want
             }
             else 
             {
