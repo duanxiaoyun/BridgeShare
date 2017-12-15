@@ -9,7 +9,7 @@ public class Scenes_And_UI : MonoBehaviour {
 
     private void Awake()
     {
-        UIManager.Instance.Scenes_And_UI = this;
+        UIManageryun.Instance.Scenes_And_UI = this;
     }
 
     // Update is called once per frame
@@ -20,11 +20,13 @@ public class Scenes_And_UI : MonoBehaviour {
     public void Pause_Games()
     {
         Pause.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void In_Pause_Games()
     {
         Pause.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void LoadScene_Games()
@@ -42,5 +44,9 @@ public class Scenes_And_UI : MonoBehaviour {
     public void LoadScene_FarJump()
     {
         SceneManager.LoadScene("FarJump");
+    }
+    public void LoadScene_PushBall()
+    {
+        SceneManager.LoadScene("PushBall");
     }
 }

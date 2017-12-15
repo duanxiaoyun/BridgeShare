@@ -44,6 +44,10 @@ public class JumpControll : MonoBehaviour
     [SerializeField]
     private float timer = 30.0f;
 
+    private int Score;
+    [SerializeField]
+    private GameObject ScoreUI;
+
     //计时器
     float Notetimer = 0;
 
@@ -62,6 +66,7 @@ public class JumpControll : MonoBehaviour
         void Start ()
     {
         Playeranim = GetComponent<Animator>();
+        Score = 0;
     }
 
     // Update is called once per frame
@@ -77,12 +82,12 @@ public class JumpControll : MonoBehaviour
         {
             Notetimer = 0;
 
-            //指定随机预制体
+                  //指定随机预制体
             int noteindex = UnityEngine.Random.Range(0, 4);
 
             GameObject NotePrefab = NotePrefabs[noteindex];
 
-            //随机预制体的位置和范围
+                   //随机预制体的位置和范围
             //Vector2 point = Camera.main.ViewportToWorldPoint(new Vector2(Random.value, Random.value));
 
             float x = UnityEngine.Random.Range(-1100, 1100);
@@ -92,20 +97,20 @@ public class JumpControll : MonoBehaviour
 
             Vector2 point = new Vector2(x, y);
 
-            //在指定范围生成note预制体
+                  //在指定范围生成note预制体
             notes = Instantiate(NotePrefab, point, NotePrefab.transform.rotation) as GameObject;
             notes.transform.SetParent(FindObjectOfType<Canvas>().transform);
 
-            //获取note组件
+                  //获取note组件
             if (notes != null)
             {
                 TimeCount _TimeCountScript= notes.AddComponent<TimeCount>();
             }
 
-            //点击note响应事件
+                    //点击note响应事件
             notes.GetComponent<Button>().onClick.AddListener(delegate ()
             {
-
+                Score += 5;
                 Playeranim.SetTrigger("Jump");
 
                 Notetimer += notes.GetComponent<TimeCount>()._TimeCount;
@@ -129,7 +134,7 @@ public class JumpControll : MonoBehaviour
                 Destroy(notelevel, 0.5f);
             });
 
-            //五秒销毁预制体
+                //五秒销毁预制体
             Destroy(notes, 5);
 
         }
@@ -145,6 +150,10 @@ public class JumpControll : MonoBehaviour
                 TimeNum.transform.GetChild(i).GetComponent<Image>().sprite = numbers[nums[i]];
             }
         }
+       
+        ScoreUI.transform.GetChild(1).GetComponent<Image>().sprite = numbers[Score % 10];
+        ScoreUI.transform.GetChild(2).GetComponent<Image>().sprite = numbers[Score / 10];
+        ScoreUI.transform.GetChild(3).GetComponent<Image>().sprite = numbers[Score / 100];
 
         HandleInput();
         Miss();

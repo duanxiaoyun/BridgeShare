@@ -19,9 +19,11 @@ public class PlayerManager : Singleton<PlayerManager>
     }
 
     //******Main******
+
     public int Coin;
     public int Card;
     public int Shoes;
+    public int Today_play_times=0;
 
 
     //******Jump******
@@ -30,12 +32,17 @@ public class PlayerManager : Singleton<PlayerManager>
     public int JumpScore = 0;
     public int JumpHighScore = 0;
 
-
     //******FarJump******
 
+    public int FarJumpStar = 0;
+    public int FarJumpScore = 0;
+    public int FarJumpHighScore = 0;
 
+    //******PushBall******
 
-
+    public int PushBallStar = 0;
+    public int PushBallScore = 0;
+    public int PushBallHighScore = 0;
 
 
     // Use this for initialization

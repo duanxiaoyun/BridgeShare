@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : Singleton<UIManager>
+public class UIManageryun : Singleton<UIManageryun>
 {
 
     Scenes_And_UI _Scenes_And_UI;
