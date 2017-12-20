@@ -152,7 +152,7 @@ public class JumpControll : MonoBehaviour
         }
        
         ScoreUI.transform.GetChild(1).GetComponent<Image>().sprite = numbers[Score % 10];
-        ScoreUI.transform.GetChild(2).GetComponent<Image>().sprite = numbers[Score / 10];
+        ScoreUI.transform.GetChild(2).GetComponent<Image>().sprite = numbers[(Score / 10)%10];
         ScoreUI.transform.GetChild(3).GetComponent<Image>().sprite = numbers[Score / 100];
 
         HandleInput();

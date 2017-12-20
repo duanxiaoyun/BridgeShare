@@ -8,6 +8,7 @@ public class TimeCount : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         _TimeCount = 0;
 
     }
