@@ -78,6 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\PushBall\UICircle.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\PushBall\UILine.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\PushBall\UITouchLine.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\UI\UIBaseView.cs" />
     <Compile Include="Assets\LongJump\2 Scripts\CameraMove.cs" />
     <Compile Include="Assets\LongJump\2 Scripts\GameManager.cs" />
     <Compile Include="Assets\LongJump\2 Scripts\LeaveTrigger.cs" />
