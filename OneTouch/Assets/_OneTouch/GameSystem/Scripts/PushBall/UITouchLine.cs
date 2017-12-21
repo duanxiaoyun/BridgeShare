@@ -29,6 +29,9 @@ public class UITouchLine : UIBaseView
     private bool isTouch;
     private int currentTouchCircleId = -1;
 
+    private Animator Playeranim;
+    public GameObject player;
+
     /// <summary>
     /// 连线是否已经结束。 true：连线成功  false：连线失败
     /// </summary>
@@ -39,6 +42,7 @@ public class UITouchLine : UIBaseView
     {
         circlePrefab.SetActive(false);
         linePrefab.SetActive(false);
+        Playeranim = player.GetComponent<Animator>();
         Create();
     }
 
@@ -160,6 +164,7 @@ public class UITouchLine : UIBaseView
                 {
                     onComplete(false);
                 }
+                Playeranim.SetTrigger("Miss");
                 Debug.Log("Failure");
             }
         }
