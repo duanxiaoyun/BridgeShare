@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public enum GameState {
 	menu,
@@ -11,10 +12,10 @@ public enum GameState {
 }
 
 public class GameManager : MonoBehaviour {
-
-	public GameState currentGameState = GameState.menu;
+	public GameObject dailyWanning;
+//	public GameState currentGameState = GameState.menu;
 	public static GameManager instance;
-	public static int Count;
+
 
 	//public Canvas menuCanvas;
 
@@ -24,17 +25,29 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		
+		dailyWanning.SetActive (false);
 	}
 
 	void Update(){
 		
 	}
 
-	public void StartGame(){
-		SceneManager.LoadScene ("LongJump");
-	}
+	/*public void RetryGame(){
+		nowTime = System.DateTime.Now;
+		longjump_limit = preTime - nowTime;
 
+		if (longjump_limit.TotalMinutes > 1) {
+			Count = 0;
+		}
+		if (GameManager.Count >= 3) {
+			dailyWanning.SetActive (true);
+		} else {
+			SceneManager.LoadScene ("FarJump");
+		}
+	}*/
+	public void EndGame(){
+		//SceneManager.LoadScene ("Main");
+	}
 	// Update is called once per frame
 	/*public void StartGame() {
 		PlayerController.instance.StartGame ();

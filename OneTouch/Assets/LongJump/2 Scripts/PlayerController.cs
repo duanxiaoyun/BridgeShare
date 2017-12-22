@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,14 +11,14 @@ public class PlayerController : MonoBehaviour {
 	// Slider 값 변수
 	public Slider sliderBar;
 	//타이머 UI Text
-	public Text counterText;
+	//public Text counterText;
 	//타이머 변수형태 변환을 위한 변수
 	public float seconds;
 
 	//점프하는 힘
-	public float jumpForce = 0.0f;
+	public float jumpForce;
 	//뛰는 힘
-	public float runningSpeed = 20.0f;
+	public float runningSpeed;
 	//애니메이션 매개
 	public Animator animator;
 
@@ -43,17 +44,20 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 nowPos;
 	private Vector3 prePos;
 	private float down;
+	private bool isEnd;
+
+	private int count;
+
+	public DateTime preTime;
 
 	void Awake(){
 		rigidBody = GetComponent<Rigidbody2D> ();
 		//counterText = GetComponent<Text>() as Text;
 		instance = this;
 		startingPosition = this.transform.position;
-		jumpForce = 10.0f;
-		runningSpeed = 20.0f;
-		//터치 시간 10초 설정
-		timer = 8.2f;
 
+		//터치 시간 10초 설정
+		timer = 33.2f;
 	}
 	void Start(){
 		topScore = UIManager.topScore;
@@ -62,6 +66,11 @@ public class PlayerController : MonoBehaviour {
 		startTable.SetActive (true);
 		prePos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 
+		jumpForce = 2000.0f;
+		runningSpeed = 2000.0f;
+
+		isEnd = false;
+
 	}
 	/*public void StartGame(){
 		animator.SetBool ("isAlive", true);
@@ -69,9 +78,10 @@ public class PlayerController : MonoBehaviour {
 	}*/
 	// Update is called once per frame
 	void Update () {
+		//Debug.Log (GameManager.Count);
 		sliderBar.value = runningSpeed;
 		seconds = (int)timer+1;
-		counterText.text = seconds.ToString("00");
+		//counterText.text = seconds.ToString("00");
 		Minor ();
 		timer -= Time.deltaTime;
 
@@ -93,17 +103,17 @@ public class PlayerController : MonoBehaviour {
 
 			//rigidBody.velocity = new Vector2 (runningSpeed, rigidBody.velocity.y);
 		}
-
-		if (IsGrounded()) {
+		if (IsGrounded ()) {
 			animator.SetBool ("isGround", true);
 			Destroy (rigidBody);
 			//runningSpeed = 0.0f;
 			target = this.transform.position;
 			this.transform.position = target;
 			Score ();
+
 			StartCoroutine (Wait ());
 		}
-
+			
 
 	}
 	void LateUpdate(){
@@ -112,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 		down = nowPos.y - prePos.y;
 		if (down < 0) {
 			if (Physics2D.Raycast (this.transform.position, Vector2.down, 510.0f, groundLayer.value)) {
-				animator.SetBool ("isDown", true);
+				animator.SetBool ("isGround", true);
 			}
 
 		}
@@ -123,34 +133,41 @@ public class PlayerController : MonoBehaviour {
 	// 터치 시 점프 힘 추가
 	public void Jump(){
 		animator.SetBool ("isTouch", true);
-		jumpForce += 0.3f;
-		runningSpeed += 0.6f;
+		jumpForce += 50.0f;
+		runningSpeed += 50.0f;
 	}
 
 	// 게이지 구간 별 줄어듦
 	public void Minor(){
 		
-		if (runningSpeed > 200.0f && runningSpeed < 400.0f) {
-			runningSpeed -= 0.01f;
+		if (runningSpeed > 2000.0f && runningSpeed < 4000.0f) {
+			jumpForce -= 1.0f;
+			runningSpeed -= 1.0f;
 
-		} else if (runningSpeed > 400.0f && runningSpeed < 700.0f) {
-			runningSpeed -= 0.03f;
+		} else if (runningSpeed > 4000.0f && runningSpeed < 7000.0f) {
+			jumpForce -= 3.0f;
+			runningSpeed -= 3.0f;
 
-		} else if (runningSpeed > 700.0f && runningSpeed < 800.0f) {
-			runningSpeed -= 0.05f;
+		} else if (runningSpeed > 7000.0f && runningSpeed < 8000.0f) {
+			jumpForce -= 5.0f;
+			runningSpeed -= 5.0f;
 
-		} else if (runningSpeed > 800.0f) {
-			runningSpeed = 80.0f;
+		} else if (runningSpeed > 10000.0f) {
+			runningSpeed = 10000.0f;
 		}
 	}
 
 	//이동한 거리만큼 계산
 	public void Score(){
-		nowScore = (target.x - startingPosition.x)/3;
+		nowScore = (target.x - startingPosition.x)/300;
 		if(UIManager.topScore < nowScore){
 			UIManager.topScore = nowScore;
 		}
 	}
+
+	public void Reward(){
+	}
+
 
 	//Ground 판별을 위한 layer값 저장 변수
 	public LayerMask groundLayer;
@@ -168,11 +185,21 @@ public class PlayerController : MonoBehaviour {
 	}
 	// 착지후 기다림 및 기록 측정
 	IEnumerator Wait(){
-		GameManager.Count += 1; 
-		yield return new WaitForSeconds(2);
-		scoreTable.SetActive (true);
+		if (isEnd == false) {
+			isEnd = true;
 
+			/*count = PlayerPrefs.GetInt ("FarJump_limit");
+			count += 1;
+			PlayerPrefs.SetInt ("FarJump_limit", count);
 
+			if (count == 3) {
+				preTime = System.DateTime.Now;
+
+			}*/
+
+			yield return new WaitForSeconds (2);
+			scoreTable.SetActive (true);
+		}
 	}
 
 }

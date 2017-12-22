@@ -21,6 +21,7 @@ public class UITouchLine : UIBaseView
     public int circleCount = 3;
     public List<UICircle> circleList;
     public List<UILine> lineList;
+
     /// <summary>
     /// 真实半径
     /// </summary>
@@ -31,6 +32,14 @@ public class UITouchLine : UIBaseView
 
     private Animator Playeranim;
     public GameObject player;
+
+    ////计时器
+    //float Notetimer = 0;
+
+    //[SerializeField]
+    //private GameObject/*[]*/ NotePrefab/*s*/;
+
+    //GameObject notes;
 
     /// <summary>
     /// 连线是否已经结束。 true：连线成功  false：连线失败
@@ -59,6 +68,33 @@ public class UITouchLine : UIBaseView
 #endif
                 Init();
         }
+
+        //Notetimer += Time.deltaTime;
+
+        //    if (Notetimer >= 2)
+        //    {
+        //        Notetimer = 0;
+
+        //        //指定随机预制体
+        //        //int noteindex = UnityEngine.Random.Range(0, 4);
+
+        //        //GameObject NotePrefab = NotePrefab/*s[noteindex]*/;
+
+        //        //随机预制体的位置和范围
+        //        //Vector2 point = Camera.main.ViewportToWorldPoint(new Vector2(Random.value, Random.value));
+
+        //        float x = UnityEngine.Random.Range(-1100, 1100);
+        //        float y = UnityEngine.Random.Range(-300, 500);
+        //    //去掉player的部分
+        //        //float x1 = Random.Range(-400, 400);
+        //        //float y1 = Random.Range(-300, 400);
+
+        //        Vector2 point = new Vector2(x, y);
+
+        //        //在指定范围生成note预制体
+        //        notes = Instantiate(NotePrefab, point, NotePrefab.transform.rotation) as GameObject;
+        //        notes.transform.SetParent(FindObjectOfType<Canvas>().transform);
+        //    }
     }
 
     void Init(){
@@ -110,9 +146,9 @@ public class UITouchLine : UIBaseView
         }
         return circle;
     }
-    UILine line;
+    //UILine line;
     UILine CreateLine(int index,Vector2 pos){
-        line = Instantiate(linePrefab) as UILine;
+        UILine line = Instantiate(linePrefab) as UILine;
         line.rectTransform.SetParent(rectTransform, false);
         line.SetActive(true);
         line.id = index;
@@ -155,7 +191,14 @@ public class UITouchLine : UIBaseView
                     }
                     //在这里可以写消失的代码
                     Debug.Log("Success");
-                    Destroy(line);
+                    Playeranim.SetBool("Run", true);
+                    float timer = 0.0f;
+                    timer += Time.deltaTime;
+                    if (timer >= 3.0f)
+                    {
+                        timer = 0;
+                        Playeranim.SetBool("Run", false);
+                    }
                 }
             }
             else {

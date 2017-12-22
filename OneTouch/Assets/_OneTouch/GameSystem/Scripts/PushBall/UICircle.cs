@@ -7,7 +7,14 @@ public class UICircle : UIBaseView,IPointerDownHandler,IPointerEnterHandler,IPoi
 {
     public Image img_circle;
     public float radius;
-    public Vector2 center { get { return rectTransform.anchoredPosition; }  set{rectTransform.anchoredPosition = value; } }
+    public Vector2 center {
+        get{
+            return rectTransform.anchoredPosition;
+        }
+        set {
+            rectTransform.anchoredPosition = value;
+        }
+    }
 
     public UnityAction<UICircle, float> onEnterCircle,onExitCircle,onStartCircle;
 
@@ -32,7 +39,6 @@ public class UICircle : UIBaseView,IPointerDownHandler,IPointerEnterHandler,IPoi
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
         if (!isActiveAndEnabled)
             return;
 

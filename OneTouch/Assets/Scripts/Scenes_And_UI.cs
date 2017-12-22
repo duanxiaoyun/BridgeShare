@@ -49,4 +49,8 @@ public class Scenes_And_UI : MonoBehaviour {
     {
         SceneManager.LoadScene("PushBall");
     }
+    public void LoadScene_bonusgames()
+    {
+        SceneManager.LoadScene("bonusgames");
+    }
 }

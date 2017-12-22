@@ -63,7 +63,7 @@ public class JumpControll : MonoBehaviour
     }
 
         // Use this for initialization
-        void Start ()
+    void Start ()
     {
         Playeranim = GetComponent<Animator>();
         Score = 0;

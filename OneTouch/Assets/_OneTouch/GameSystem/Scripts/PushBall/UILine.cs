@@ -34,7 +34,7 @@ public class UILine : UIBaseView {
     public Vector2 GetEndPosition()
     {
         float r = radius * 2 + length;
-        float a = angle * Mathf.Deg2Rad;
+        float a = angle * Mathf.Deg2Rad; //Mathf.Deg2Rad:度到弧度的转化常量
         Vector2 end = rectTransform.anchoredPosition;
         end.x = end.x + r * Mathf.Cos(a);
         end.y = end.y + r * Mathf.Sin(a);

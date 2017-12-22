@@ -6,7 +6,11 @@ public class UIBaseView : MonoBehaviour {
 
     public int id;
     private RectTransform m_RectTransform;
-    public RectTransform rectTransform{ get { return m_RectTransform ?? (m_RectTransform = GetComponent<RectTransform>()); } }
+    public RectTransform rectTransform{
+        get {
+            return m_RectTransform ?? (m_RectTransform = GetComponent<RectTransform>());
+        }
+    }
 
     public bool activeSelf{ get { return gameObject.activeSelf; }}
 
