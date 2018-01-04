@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEditor;
+//using UnityEditor;
 using System;
 
 public class JumpControll : MonoBehaviour
@@ -45,8 +45,12 @@ public class JumpControll : MonoBehaviour
     private float timer = 30.0f;
 
     private int Score;
+
     [SerializeField]
     private GameObject ScoreUI;
+
+    [SerializeField]
+    private GameObject ResultUI;
 
     //计时器
     float Notetimer = 0;
@@ -118,7 +122,8 @@ public class JumpControll : MonoBehaviour
                 GameObject NoteLevelPrefab = NoteLevels[Convert.ToUInt32(Notetimer.ToString().Split('.')[0])];
 
                 //notes 爆炸效果
-                notesEff = Instantiate(NotePrefabsEffs[noteindex], point, NotePrefab.transform.rotation) as GameObject;
+                notesEff = Instantiate(NotePrefabsEffs[noteindex], point, 
+                    NotePrefab.transform.rotation) as GameObject;
                 
                 //删除note
                 Destroy(notes,0.0f);
@@ -127,7 +132,9 @@ public class JumpControll : MonoBehaviour
                 Destroy(notesEff, 1.0f);
 
                 //生成notelevel
-                notelevel = Instantiate(NoteLevelPrefab, new Vector2(point.x, point.y + 200), NoteLevelPrefab.transform.rotation) as GameObject;
+                notelevel = Instantiate(NoteLevelPrefab, new Vector2(point.x, point.y + 200), 
+                    NoteLevelPrefab.transform.rotation) as GameObject;
+
                 notelevel.transform.SetParent(FindObjectOfType<Canvas>().transform);
 
                 //销毁notelevel预制体
@@ -150,7 +157,12 @@ public class JumpControll : MonoBehaviour
                 TimeNum.transform.GetChild(i).GetComponent<Image>().sprite = numbers[nums[i]];
             }
         }
-       
+        if (timer < 0.1f)
+        {
+            Time.timeScale = 0;
+            ResultUI.SetActive(true);
+        }
+
         ScoreUI.transform.GetChild(1).GetComponent<Image>().sprite = numbers[Score % 10];
         ScoreUI.transform.GetChild(2).GetComponent<Image>().sprite = numbers[(Score / 10)%10];
         ScoreUI.transform.GetChild(3).GetComponent<Image>().sprite = numbers[Score / 100];

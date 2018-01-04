@@ -31,7 +31,7 @@ public class Scenes_And_UI : MonoBehaviour {
 
     public void LoadScene_Games()
 	{
-		SceneManager.LoadScene ("games");
+		SceneManager.LoadScene ("GameMenu");
 	}
 	public void LoadScene_Jump()
 	{

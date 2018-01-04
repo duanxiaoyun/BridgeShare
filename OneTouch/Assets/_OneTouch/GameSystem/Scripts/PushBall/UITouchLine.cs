@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class UITouchLine : UIBaseView
 {
@@ -9,19 +10,18 @@ public class UITouchLine : UIBaseView
     public Sprite spr_start;
     public Sprite spr_middle;
     public Sprite spr_end;
-
+    public CanvasGroup canvasGroup;
+    public float lifetime=5;
     public float circleRadius = 128;
     public float circlePadding = 0;
     public float minLineLength = 150;
     public float maxLineLength = 400;
     public float minAngle = -45;
     public float maxAngle = 45;
-
     [Range(2, 5)]
     public int circleCount = 3;
     public List<UICircle> circleList;
     public List<UILine> lineList;
-
     /// <summary>
     /// 真实半径
     /// </summary>
@@ -29,27 +29,17 @@ public class UITouchLine : UIBaseView
     public float realRadius { get { return circleRadius + circlePadding; } }
     private bool isTouch;
     private int currentTouchCircleId = -1;
-
-    private Animator Playeranim;
-    public GameObject player;
-
-    private Animator Ballanim;
-
-    ////计时器
-    //float Notetimer = 0;
-
     /// <summary>
     /// 连线是否已经结束。 true：连线成功  false：连线失败
     /// </summary>
     public UnityAction<bool> onComplete;
+    private Tween tween;
 
     // Use this for initialization
     void Start()
     {
         circlePrefab.SetActive(false);
         linePrefab.SetActive(false);
-        Playeranim = player.GetComponent<Animator>();
-        Ballanim = player.transform.GetChild(0).GetComponent<Animator>();
         Create();
     }
 
@@ -64,13 +54,26 @@ public class UITouchLine : UIBaseView
 #else
             if(!Input.anyKey)
 #endif
-                Init();
+                InitTouch();
         }
-
-        
+        lifetime -= Time.deltaTime;
+        if(lifetime<1 && tween==null){
+            tween = canvasGroup.DOFade(0, 1);
+        }else if(lifetime<0){
+            tween = null;
+            if(isTouch)
+            {
+                Debug.Log("Failure");
+                if (onComplete != null)
+                {
+                    onComplete(false);
+                }
+            }
+            Destroy(gameObject);
+        }
     }
 
-    void Init(){
+    void InitTouch(){
         isTouch = false;
         currentTouchCircleId = -1;
     }
@@ -119,7 +122,7 @@ public class UITouchLine : UIBaseView
         }
         return circle;
     }
-    //UILine line;
+
     UILine CreateLine(int index,Vector2 pos){
         UILine line = Instantiate(linePrefab) as UILine;
         line.rectTransform.SetParent(rectTransform, false);
@@ -157,32 +160,20 @@ public class UITouchLine : UIBaseView
                 currentTouchCircleId = circle.id;
                 if (circle.id == circleCount - 1)
                 {
-                    Init();
+                    InitTouch();
+                    Debug.Log("Success");
                     if (onComplete != null)
                     {
                         onComplete(true);
                     }
-                    //在这里可以写消失的代码
-                    Debug.Log("Success");
-                    Playeranim.SetBool("Run", true);
-                    Ballanim.SetBool("Run", true);
-                    //float timer = 0.0f;
-                    //timer += Time.deltaTime;
-                    //if (timer >= 3.0f)
-                    //{
-                    //    timer = 0;
-                    //    Playeranim.SetBool("Run", false);
-                    //}
                 }
-            }
-            else {
-                Init();
+            }else{
+                InitTouch();
+                Debug.Log("Failure");
                 if(onComplete!=null)
                 {
                     onComplete(false);
                 }
-                Playeranim.SetTrigger("Miss");
-                Debug.Log("Failure");
             }
         }
     }
