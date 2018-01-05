@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainController : MonoBehaviour {
-<<<<<<< HEAD
-=======
-
->>>>>>> bf7561bdaa9840ce0e7233db83b007e51388f214
     public UIMainMenuItem menu_user;
     public UIMainMenuItem menu_shoes;
     public UIMainMenuItem menu_coin;
