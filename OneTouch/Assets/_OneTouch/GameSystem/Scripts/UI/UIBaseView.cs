@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIBaseView : MonoBehaviour {
-
     public int id;
     private RectTransform m_RectTransform;
-    public RectTransform rectTransform{
-        get {
-            return m_RectTransform ?? (m_RectTransform = GetComponent<RectTransform>());
-        }
-    }
+    public RectTransform rectTransform{ get { return m_RectTransform ?? (m_RectTransform = GetComponent<RectTransform>()); } }
 
     public bool activeSelf{ get { return gameObject.activeSelf; }}
 
@@ -20,5 +15,13 @@ public class UIBaseView : MonoBehaviour {
     {
         if(activeSelf!=value)
             gameObject.SetActive(value);
+    }
+
+    public void Show(){
+        SetActive(true);
+    }
+
+    public void Hide(){
+        SetActive(false);
     }
 }
