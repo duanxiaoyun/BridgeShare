@@ -27,6 +27,10 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
     public ParticleSystem par_3;
     public ParticleSystem par_4;
 
+    public Image LevelImage;
+    public Sprite[] LevelSprites;
+   
+
     public float radius{ get { return rectTransform.sizeDelta.x; } set { rectTransform.sizeDelta = new Vector2(value, value); } }
     public Vector2 center { get { return rectTransform.anchoredPosition; }  set{rectTransform.anchoredPosition = value; } }
 
@@ -96,19 +100,31 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
         switch (type)
         {
             case ScoreType.Perfect:
-                Debug.Log("在这里播放 Node Perfect 的效果");
+                //Debug.Log("在这里播放 Node Perfect 的效果");
+                //LevelImage.overrideSprite = LevelSprites[0];
+                //LevelImage.overrideSprite = Resources.Load("Perfect", typeof(Sprite)) as Sprite;
+                //StartCoroutine(WaitShowLevel(1f));
                 break;
             case ScoreType.Great:
-                Debug.Log("在这里播放 Node Great 的效果");
+                //Debug.Log("在这里播放 Node Great 的效果");
+                //LevelImage.overrideSprite = LevelSprites[1];
+                //LevelImage.overrideSprite = Resources.Load("Great", typeof(Sprite)) as Sprite;
+                //StartCoroutine(WaitShowLevel(1f));
                 break;
             case ScoreType.Nice:
-                Debug.Log("在这里播放 Node Nice 的效果");
+                //Debug.Log("在这里播放 Node Nice 的效果");
+                //LevelImage.overrideSprite = LevelSprites[2];
+                //StartCoroutine(WaitShowLevel(1f));
                 break;
             case ScoreType.Bad:
-                Debug.Log("在这里播放 Node Bad 的效果");
+                //Debug.Log("在这里播放 Node Bad 的效果");
+                //LevelImage.overrideSprite = LevelSprites[3];
+                //StartCoroutine(WaitShowLevel(1f));
                 break;
             case ScoreType.Miss:
-                Debug.Log("在这里播放 Node Miss 的效果");
+                //Debug.Log("在这里播放 Node Miss 的效果");
+                //LevelImage.overrideSprite = LevelSprites[4];
+                //StartCoroutine(WaitShowLevel(1f));
                 break;
         }
     }
@@ -128,6 +144,13 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
         if (onNodeDestroy != null)
             onNodeDestroy();
         Destroy(gameObject);
+    }
+
+    IEnumerator WaitShowLevel(float time)
+    {
+        LevelImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(time);
+        LevelImage.gameObject.SetActive(false);
     }
 
 }

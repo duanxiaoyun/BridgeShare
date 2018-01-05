@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_OneTouch/GameSystem/Scenes/Main.unity
+- path: Assets/_OneTouch/GameSystem/Scenes/Jump.unity
   isLoaded: 1
   isActive: 1
