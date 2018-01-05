@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_OneTouch/GameSystem/Scenes/GameMenu.unity
     guid: 807fa7f1237e044e7b7a66778a9ee920
   - enabled: 1
+    path: Assets/_OneTouch/GameSystem/Scenes/BonusGames.unity
+    guid: 939df0e73b0bdfc4d8f731231d72c6ec
+  - enabled: 1
     path: Assets/_OneTouch/GameSystem/Scenes/PushBall.unity
     guid: 841ddaea5f4f846cbaa636ab04a9354c
   - enabled: 1

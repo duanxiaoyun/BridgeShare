@@ -21,7 +21,9 @@ public class MainController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         menu_mainGame.button.onClick.AddListener(LevelManager.GotoGameMenu);
-	}
+        menu_propGame.button.onClick.AddListener(LevelManager.GotoBonusGames);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

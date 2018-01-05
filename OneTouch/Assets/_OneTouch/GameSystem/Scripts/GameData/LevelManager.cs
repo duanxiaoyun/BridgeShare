@@ -9,7 +9,8 @@ public enum LevelName{
     GameMenu,
     Jump,
     FarJump,
-    PushBall
+    PushBall,
+    BonusGames
 }
 
 public class LevelManager  {
@@ -42,5 +43,9 @@ public class LevelManager  {
     public static void GotoPushBall()
     {
         GotoLevel(LevelName.PushBall);
+    }
+    public static void GotoBonusGames()
+    {
+        GotoLevel(LevelName.BonusGames);
     }
 }
