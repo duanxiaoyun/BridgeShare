@@ -4,14 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+<<<<<<< HEAD
 public class GameModel
 {
+=======
+public class GameModel{
+>>>>>>> bf7561bdaa9840ce0e7233db83b007e51388f214
     public string name;
     public LevelName sceneName;
     public Sprite icon;
 
     public int starNum;
     //public bool enabled;
+<<<<<<< HEAD
 }
 
 
@@ -43,4 +48,6 @@ public class ScoreItem{
         totalHP += hp;
         count++;
     }
+=======
+>>>>>>> bf7561bdaa9840ce0e7233db83b007e51388f214
 }

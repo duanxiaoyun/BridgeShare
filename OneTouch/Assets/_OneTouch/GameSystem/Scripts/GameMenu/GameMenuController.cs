@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameMenuController : MonoBehaviour {
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf7561bdaa9840ce0e7233db83b007e51388f214
     public Button btn_back;
     //public Text txt_title;
     public List<UIGameSelectItem> gameUIList;
