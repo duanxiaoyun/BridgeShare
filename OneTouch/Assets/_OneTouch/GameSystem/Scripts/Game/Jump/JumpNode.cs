@@ -146,11 +146,11 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
         Destroy(gameObject);
     }
 
-    IEnumerator WaitShowLevel(float time)
-    {
-        LevelImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(time);
-        LevelImage.gameObject.SetActive(false);
-    }
+    //IEnumerator WaitShowLevel(float time)
+    //{
+    //    LevelImage.gameObject.SetActive(true);
+    //    yield return new WaitForSeconds(time);
+    //    LevelImage.gameObject.SetActive(false);
+    //}
 
 }

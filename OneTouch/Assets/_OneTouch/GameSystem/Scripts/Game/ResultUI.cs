@@ -10,8 +10,9 @@ public class ResultUI : RecordUI {
 
 	// Use this for initialization
 	void Start () {
-        btn_replay.onClick.AddListener(LevelManager.GotoGameMenu);
-	}
+        //btn_replay.onClick.AddListener(LevelManager.GotoGameMenu);
+        btn_replay.onClick.AddListener(LevelManager.GotoJump);
+    }
 	
 	// Update is called once per frame
 	void Update () {
