@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 223541046297144734}
   - component: {fileID: 114072798697173260}
   - component: {fileID: 114610116925639650}
-  - component: {fileID: 114957508477727596}
+  - component: {fileID: 114604086049780116}
   - component: {fileID: 114611989482278102}
   - component: {fileID: 114664634081139402}
   - component: {fileID: 114978938065976792}
@@ -3585,6 +3585,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114604086049780116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087445061804270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee140d2b04b7124ba778f7d5c8e51cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
+  gameUI: {fileID: 114135369608429676}
+  pauseUI: {fileID: 114136627839284886}
+  resultUI: {fileID: 114246559652985776}
+  gameTime: {fileID: 114611989482278102}
+  playerHP: {fileID: 114664634081139402}
+  gameData: {fileID: 114978938065976792}
+  isGameOver: 0
 --- !u!114 &114604259575377528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4904,25 +4923,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
---- !u!114 &114957508477727596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1087445061804270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fe94079b9d14c239ddeffffb1416e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  gameUI: {fileID: 114135369608429676}
-  pauseUI: {fileID: 114136627839284886}
-  resultUI: {fileID: 114246559652985776}
-  gameTime: {fileID: 114611989482278102}
-  playerHP: {fileID: 114664634081139402}
-  gameData: {fileID: 114978938065976792}
-  isGameOver: 0
 --- !u!114 &114973361415692098
 MonoBehaviour:
   m_ObjectHideFlags: 1

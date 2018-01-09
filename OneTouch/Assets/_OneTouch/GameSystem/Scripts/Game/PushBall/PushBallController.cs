@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PushBallController : MonoBehaviour {
-    public GameController game;
+    public GameController_PushBall game;
     public PushBallPlayer player;
     public RectTransform content;
     public UITouchLine linePrefab;

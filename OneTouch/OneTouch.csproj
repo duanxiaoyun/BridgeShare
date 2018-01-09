@@ -97,7 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameBGMove.cs" />
-    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameController.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameController_Jump.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameController_PushBall.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameData.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameTime.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameUI.cs" />

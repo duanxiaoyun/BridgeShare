@@ -13,10 +13,19 @@ public enum LevelName{
     BonusGames
 }
 
+
 public class LevelManager  {
+
+    public static LevelName currentLevel { get; private set; }
+
+    public static void Replay()
+    {
+        GotoLevel(currentLevel);
+    }
 
     public static void GotoLevel(LevelName level)
     {
+        currentLevel = level;
         SceneManager.LoadScene(level.ToString());
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultUI : RecordUI {
     public Button btn_replay;
@@ -10,14 +11,22 @@ public class ResultUI : RecordUI {
 
 	// Use this for initialization
 	void Start () {
-        //btn_replay.onClick.AddListener(LevelManager.GotoGameMenu);
-        btn_replay.onClick.AddListener(LevelManager.GotoJump);
+
+        btn_replay.onClick.AddListener(LevelManager.Replay);
+
+        //if (SceneManager.GetActiveScene().name == "Jump")
+        //{
+        //    btn_replay.onClick.AddListener(LevelManager.GotoJump);
+        //}
+        //else if (SceneManager.GetActiveScene().name == "PushBall")
+        //{
+        //    btn_replay.onClick.AddListener(LevelManager.GotoPushBall);
+        //}
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update () {
+    }
 
     public void SetMiss(int num)
     {

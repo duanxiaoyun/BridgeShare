@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpController : MonoBehaviour {
     public RectTransform uiRootRect;
-    public GameController game;
+    public GameController_Jump game;
     public JumpPlayer player;
     public RectTransform content;
     public JumpNode nodePrefab;

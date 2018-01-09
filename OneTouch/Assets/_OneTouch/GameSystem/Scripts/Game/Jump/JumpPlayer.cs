@@ -12,7 +12,7 @@ public class JumpPlayer : MonoBehaviour {
 
     public Sprite[] LeveliPics;
 
-    public GameController GameController2;
+    public GameController_Jump GameController2;
 
     // Use this for initialization
     void Start () {

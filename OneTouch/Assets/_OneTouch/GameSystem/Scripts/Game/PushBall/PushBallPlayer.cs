@@ -15,7 +15,7 @@ public class PushBallPlayer : MonoBehaviour
     public Image BallImage;
     public GameBGMove bg1;
 
-    public GameController GameController1;
+    public GameController_PushBall GameController1;
 
     public Image LevelImage;
 
