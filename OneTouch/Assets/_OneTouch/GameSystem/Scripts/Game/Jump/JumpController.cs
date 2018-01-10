@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class JumpController : MonoBehaviour {
-    public RectTransform uiRootRect;
-    public GameController_Jump game;
+    public Canvas canvas;
+    public JumpBGClick bgClick;
+    public GameController gameController;
+    public GamePropController propController;
     public JumpPlayer player;
     public RectTransform content;
     public JumpNode nodePrefab;
@@ -12,17 +16,30 @@ public class JumpController : MonoBehaviour {
     public int currentNodeCount = 0;
     public float nextTime = 0;
     public List<JumpNodeSkin> skinList;
+    public float doubleScoreTime = 0;
+ 
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (game.isGameStart && !game.isGameOver)
+
+    // Use this for initialization
+    void Start () {
+        bgClick.onClickBackground += OnClickBackground;
+        propController.onPickWater += OnPickWater;
+        propController.onPickBread += OnPickBread;
+        doubleScoreTime = 0;
+
+        gameController.highRecord = GameArchive.GetJumpRecord();
+        gameController.UpdateStar();
+        gameController.onGameOver += OnGameOver;
+
+    }
+    
+    // Update is called once per frame
+    void Update () {
+        if (gameController.isGameStart && !gameController.isGameOver)
         {
+            doubleScoreTime -= Time.deltaTime;
             nextTime -= Time.deltaTime;
+            propController.UpdateCreate();
             if (nextTime < 0)
             {
                 if (currentNodeCount < maxNodeCount)
@@ -36,7 +53,7 @@ public class JumpController : MonoBehaviour {
 
     void Create()
     {
-        Vector2 pos = uiRootRect.rect.size * 0.5f;
+        Vector2 pos = content.rect.size * 0.5f;
         pos.x -= 200;
         pos.x = Random.Range(-pos.x, pos.x);
         pos.y -= 400;
@@ -50,44 +67,60 @@ public class JumpController : MonoBehaviour {
         currentNodeCount++;
     }
 
-    void OnComplete(JumpNode node,bool isSuccess,float usedTime){
-        ScoreType type = ScoreType.Miss;
-        int score = -20, hp = -5;
-        if (isSuccess)
-        {
-            if (usedTime <= 1)
-            {
-                type = ScoreType.Perfect;
-                score = 50;
-                hp = 0;
-            }
-            else if (usedTime <= 2)
-            {
-                type = ScoreType.Great;
-                score = 20;
-                hp = 0;
-            }
-            else if (usedTime <= 3)
-            {
-                type = ScoreType.Nice;
-                score = 10;
-                hp = 0;
-            }
-            else if (usedTime <= 4)
-            {
-                type = ScoreType.Bad;
-                score = 0;
-                hp = 0;
-            }
+    void OnComplete(JumpNode node,bool isSuccess,float usedTime,Vector2 clickPosition){
+        float distance = float.MaxValue;
+        if (isSuccess) {
+			Vector2 pos;
+			if (RectTransformUtility.ScreenPointToLocalPointInRectangle (content, clickPosition, canvas.worldCamera, out pos)) {
+				distance = Vector2.Distance (pos, node.center);
+			}
         }
-        //Debug.Log(type + "  :  " + score + "  :  " + usedTime);
-        node.ShowResult(type);
-        game.AddScore(type, score, hp);
-        player.OnNodeComplete(isSuccess, type);
+        JumpRuleData result = GameRule.GetJumpResult(isSuccess, usedTime, distance);
+        CalculateScore(result, doubleScoreTime);
+        node.ShowResult(result.type);
+        player.OnNodeComplete(isSuccess, result.type);
+    }
+
+    void OnPickWater(float doubleScoreTime) {
+        if (this.doubleScoreTime < 0)
+            this.doubleScoreTime = 0;
+        this.doubleScoreTime += doubleScoreTime;
+    }
+
+    void OnPickBread(int hp)
+    {
+        gameController.playerHP.AddHP(hp);
+    }
+
+    private void OnClickBackground()
+    {
+        CalculateScore(GameRule.ClickJumpBackground(), doubleScoreTime);
+    }
+
+    void CalculateScore(JumpRuleData data, float doubleScoreTime) {
+        if (doubleScoreTime > 0 && data.score > 0)
+            data.score *= 2;
+        gameController.AddScore(data.type, data.score, data.hp);
     }
 
     void OnNodeDestroy(){
         nextTime = 0;
         currentNodeCount--;
     }
+
+
+    void OnGameOver(bool isWin)
+    {
+        if (isWin)  //!gameController.playerHP.isDead
+        {
+            GameArchive.AddJumpStar(1);
+            player.PlayWin();
+        }
+        else { 
+            player.PlayLose();
+        }
+
+        GameArchive.SetJumpScore(gameController.gameData.totalScore);
+    }
+
 }

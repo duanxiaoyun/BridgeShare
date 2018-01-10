@@ -9,7 +9,7 @@ public class GameTime : MonoBehaviour {
 
     public bool isStart { get; private set; }
     public bool isPause { get; private set; }
-    public bool isEnd { get; private set; }
+    public bool isTimeOver { get; private set; }
     public UnityAction onTimeOver;
 
 	// Use this for initialization
@@ -19,11 +19,12 @@ public class GameTime : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(isStart && !isPause && !isEnd){
+        if(isStart && !isPause && !isTimeOver)
+        {
             currentTime -= Time.deltaTime;
             if(currentTime<0){
                 currentTime = 0;
-                isEnd = true;
+                isTimeOver = true;
                 if (onTimeOver != null)
                     onTimeOver();
             }
@@ -36,7 +37,7 @@ public class GameTime : MonoBehaviour {
 
     public void StartGame(){
         isStart = true;
-        isEnd = false;
+        isTimeOver = false;
         isPause = false;
         currentTime = timeLength;
         Time.timeScale = 1;

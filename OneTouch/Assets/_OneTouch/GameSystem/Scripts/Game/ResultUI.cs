@@ -13,15 +13,6 @@ public class ResultUI : RecordUI {
 	void Start () {
 
         btn_replay.onClick.AddListener(LevelManager.Replay);
-
-        //if (SceneManager.GetActiveScene().name == "Jump")
-        //{
-        //    btn_replay.onClick.AddListener(LevelManager.GotoJump);
-        //}
-        //else if (SceneManager.GetActiveScene().name == "PushBall")
-        //{
-        //    btn_replay.onClick.AddListener(LevelManager.GotoPushBall);
-        //}
     }
 
     // Update is called once per frame

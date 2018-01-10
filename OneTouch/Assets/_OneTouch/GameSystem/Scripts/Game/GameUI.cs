@@ -11,6 +11,7 @@ public class GameUI : UIBaseView {
     public Slider slider_hp;
     public Text txt_score;
     public ImageNumber timeUI;
+    public UIStarController starUI;
 
 
 	// Use this for initialization
@@ -22,6 +23,11 @@ public class GameUI : UIBaseView {
 	void Update () {
 		
 	}
+
+    public void SetStarNum(int count) {
+        if(starUI != null)
+            starUI.SetStarNum(count);
+    }
 
     public void SetTime(float time){
         txt_time.text = Mathf.Ceil(time).ToString();

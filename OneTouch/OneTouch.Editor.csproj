@@ -145,6 +145,9 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets/_OneTouch/GameSystem/Scripts/Tools/LitJson.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OneTouch.csproj">

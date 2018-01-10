@@ -509,7 +509,6 @@ MonoBehaviour:
   PlayerImage: {fileID: 2110447980}
   BallImage: {fileID: 1504856708}
   bg1: {fileID: 727597365}
-  GameController1: {fileID: 1190958482}
   LevelImage: {fileID: 941637653}
   LeveliPics:
   - {fileID: 21300000, guid: 99033d6051e974815a4c60b98c57aee9, type: 3}
@@ -567,8 +566,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   content: {fileID: 849844962}
-  textrue_bg1: {fileID: 2800000, guid: 4f737f51b0dda4bd28f883666fa4f425, type: 3}
-  textrue_bg2: {fileID: 2800000, guid: e5ec4ea50af254662a033a557b449cf9, type: 3}
   rawImg_bg1: {fileID: 531607501}
   rawImg_bg2: {fileID: 1483999040}
   speed: 10
@@ -857,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80a2cd66a5e9480eba74e39dec0a333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 1190958482}
+  gameController: {fileID: 1190958482}
   player: {fileID: 643451310}
   content: {fileID: 1360523905}
   linePrefab: {fileID: 114247180445466450, guid: 5bff2d1cf3efa42c995f127588f9a7e5,

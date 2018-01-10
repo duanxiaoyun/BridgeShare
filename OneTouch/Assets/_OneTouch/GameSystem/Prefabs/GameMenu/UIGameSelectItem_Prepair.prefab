@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224801014732714954}
   - component: {fileID: 114078874761068774}
+  - component: {fileID: 114184957626101196}
   m_Layer: 5
   m_Name: StarGroup
   m_TagString: Untagged
@@ -472,6 +473,23 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &114184957626101196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1694194342491056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13fb43b1617da488ce770b4a40945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starList:
+  - {fileID: 114344100813043526}
+  - {fileID: 114530622893393472}
+  - {fileID: 114884295328991378}
+  - {fileID: 114143905867002002}
+  - {fileID: 114430386964567594}
 --- !u!114 &114191196654815894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -979,12 +997,8 @@ MonoBehaviour:
   txt_title: {fileID: 114233581863860514}
   img_icon: {fileID: 114271652542568184}
   btn_start: {fileID: 114191196654815894}
-  starList:
-  - {fileID: 114344100813043526}
-  - {fileID: 114530622893393472}
-  - {fileID: 114884295328991378}
-  - {fileID: 114143905867002002}
-  - {fileID: 114430386964567594}
+  btn_resetStar: {fileID: 114575409047363022}
+  starController: {fileID: 0}
 --- !u!114 &114738212829283980
 MonoBehaviour:
   m_ObjectHideFlags: 1
