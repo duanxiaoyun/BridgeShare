@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class JumpBGClick : UIBaseView,IPointerDownHandler {
     public Canvas canvas;
     public Image img_miss;
-    public float lifetime = 0.5f;
+    public float lifetime = 0.4f;
     public float currentLifeTime;
     public UnityAction onClickBackground;
 
@@ -39,4 +39,6 @@ public class JumpBGClick : UIBaseView,IPointerDownHandler {
         if (onClickBackground != null)
             onClickBackground();
     }
+
+
 }

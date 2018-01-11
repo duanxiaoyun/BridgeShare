@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
     public UnityAction onGameStart;
     public UnityAction<bool> onGameOver;
 
+    public GameObject[] gameEffs;
+
     // Use this for initialization
     IEnumerator Start () {
         gameUI.btn_pause.onClick.AddListener(PauseGame);
@@ -25,7 +27,10 @@ public class GameController : MonoBehaviour {
         playerHP.onPlayerDead += OnPlayerDead;
         playerHP.onHPChanged += OnHPChanged;
 
-        yield return new WaitForSeconds(3);
+        gameEffs[0].SetActive(true);
+        yield return new WaitForSeconds(3.25f);
+        gameEffs[0].SetActive(false);
+
         StartGame();
         gameUI.SetMaxHP(playerHP.maxHP);
         gameUI.SetCurrentHP(playerHP.currentHP);
@@ -107,13 +112,19 @@ public class GameController : MonoBehaviour {
 
     IEnumerator WaitShowResult(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time);//播放角色的gameover的动画
+
+        gameEffs[1].SetActive(true);
+        yield return new WaitForSeconds(2.0f);// 播放游戏的gameover的动画效果。
+        gameEffs[1].SetActive(false);
+
         ShowResult();
     }
 
     void ShowResult()
     {
         gameUI.Hide();
+
         resultUI.Show();
         
         resultUI.SetStarNum(highRecord.star);

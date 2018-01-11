@@ -94,6 +94,7 @@ public class JumpController : MonoBehaviour {
 
     private void OnClickBackground()
     {
+        player.PlayMiss();
         CalculateScore(GameRule.ClickJumpBackground(), doubleScoreTime);
     }
 
@@ -113,8 +114,15 @@ public class JumpController : MonoBehaviour {
     {
         if (isWin)  //!gameController.playerHP.isDead
         {
+            if (GameArchive.IsHighRecord())
+            {
+                player.PlayHighScore();
+            }
+            else
+            {
+                player.PlayWin();
+            }
             GameArchive.AddJumpStar(1);
-            player.PlayWin();
         }
         else { 
             player.PlayLose();

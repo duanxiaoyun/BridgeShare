@@ -15,9 +15,9 @@ public class JumpPlayer : MonoBehaviour {
         PlayerAnim = Player.GetComponent<Animator>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         
 
     }
@@ -27,10 +27,20 @@ public class JumpPlayer : MonoBehaviour {
         PlayerAnim.SetBool("Win", true);
     }
 
+    public void PlayHighScore()
+    {
+        PlayerAnim.SetTrigger("HighScore");
+    }
     public void PlayLose()
     {
-        Debug.LogError("Add Lose Animation");
+        PlayerAnim.SetTrigger("GameOver");
     }
+
+    public void PlayMiss()
+    {
+        PlayerAnim.SetTrigger("Miss");
+    }
+
 
     public void OnNodeComplete(bool isSuccess, ScoreType type){
         switch (type)
@@ -45,10 +55,10 @@ public class JumpPlayer : MonoBehaviour {
                 PlayerAnim.SetTrigger("Jump");
                 break;
             case ScoreType.Bad:
+                PlayerAnim.SetTrigger("Jump");
                 break;
             case ScoreType.Miss:
-                //Debug.Log("在这里播放 Miss 的动画");
-                PlayerAnim.SetTrigger("Miss");
+                PlayMiss();
                 break;
         }
     }

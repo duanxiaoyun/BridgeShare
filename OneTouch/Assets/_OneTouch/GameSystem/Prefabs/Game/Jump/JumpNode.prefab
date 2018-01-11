@@ -414,11 +414,11 @@ MonoBehaviour:
   par_4: {fileID: 198083474938554238}
   img_level: {fileID: 114822439136558868}
   sprLevelList:
-  - {fileID: 21300000, guid: 99033d6051e974815a4c60b98c57aee9, type: 3}
-  - {fileID: 21300000, guid: 6b0b6a7871cd647549c499e7de3c6f63, type: 3}
-  - {fileID: 21300000, guid: b23ae7298852a4c418e2ad16ecf3d0db, type: 3}
-  - {fileID: 21300000, guid: 660429df8fa9748cfbd2489f0bec463e, type: 3}
   - {fileID: 21300000, guid: e4bc37179cc974388afe7b396b37d8f5, type: 3}
+  - {fileID: 21300000, guid: 660429df8fa9748cfbd2489f0bec463e, type: 3}
+  - {fileID: 21300000, guid: b23ae7298852a4c418e2ad16ecf3d0db, type: 3}
+  - {fileID: 21300000, guid: 6b0b6a7871cd647549c499e7de3c6f63, type: 3}
+  - {fileID: 21300000, guid: 99033d6051e974815a4c60b98c57aee9, type: 3}
   lifetime: 5
   currentLifeTime: 0
 --- !u!198 &198035051028447102

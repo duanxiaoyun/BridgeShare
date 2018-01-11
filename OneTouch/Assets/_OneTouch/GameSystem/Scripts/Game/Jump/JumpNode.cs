@@ -108,7 +108,7 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
         if(isClick) particles.SetActive(true);
         if (onComplete != null)
             onComplete(this,isSuccess, usedTime, clickPostion);
-        StartCoroutine(WaitDestroy(isClick ? 1.3f : 0));
+        StartCoroutine(WaitDestroy(isClick ? 0.4f : 0));
     }
 
     IEnumerator WaitDestroy(float time){

@@ -11,6 +11,7 @@ public class GameArchive {
     private const string Key_jumpHighRecord = "JumpHighRecord";
     private static GameRecord _jumpRecord;
 
+    private static bool isHighRecord;
 
     /// <summary>
     /// 获取跳绳记录
@@ -38,7 +39,9 @@ public class GameArchive {
     /// </summary>
     /// <param name="score"></param>
     public static void SetJumpScore(int score) {
-        if (GetJumpRecord().score < score) {
+        if (GetJumpRecord().score < score)
+        {
+            isHighRecord = true;//本次游戏产生了最高分；
             GetJumpRecord().score = score;
             SaveJumpRecord();
         }
@@ -82,6 +85,15 @@ public class GameArchive {
     public static int GetJumpStar() {
         return GetJumpRecord().star;
     }
-#endregion
+
+    public static bool IsHighRecord()
+    {
+        if (isHighRecord) return true;
+        else
+        {
+            return false;
+        }
+    }
+    #endregion
 
 }
