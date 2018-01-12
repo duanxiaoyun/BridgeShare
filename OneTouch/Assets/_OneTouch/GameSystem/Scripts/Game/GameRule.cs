@@ -39,16 +39,27 @@ public class GameRule  {
                 ruleData.SetData(ScoreType.Perfect, 50, 0);
                 break;
             case ScoreType.Great:
+<<<<<<< HEAD
                 ruleData.SetData(ScoreType.Great, 40, 0);
                 break;
             case ScoreType.Nice:
                 ruleData.SetData(ScoreType.Nice, 20, 0);
+=======
+                ruleData.SetData(ScoreType.Great, 20, 0);
+                break;
+            case ScoreType.Nice:
+                ruleData.SetData(ScoreType.Nice, 10, 0);
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
                 break;
             case ScoreType.Bad:
                 ruleData.SetData(ScoreType.Bad, 0, 0);
                 break;
             default:
+<<<<<<< HEAD
                 ruleData.SetData(ScoreType.Miss, -10, -10);
+=======
+                ruleData.SetData(ScoreType.Miss, -20, -10);
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
                 break;
         }
         return ruleData;

@@ -13,7 +13,10 @@ public class ResultUI : RecordUI {
 	// Use this for initialization
 	void Start () {
 
+<<<<<<< HEAD
         btn_back.onClick.AddListener(LevelManager.GotoGameMenu);
+=======
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
         btn_replay.onClick.AddListener(LevelManager.Replay);
     }
 

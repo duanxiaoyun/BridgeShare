@@ -149,12 +149,20 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
+<<<<<<< HEAD
     m_StopTime: 0.41666666
+=======
+    m_StopTime: 0.4166667
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
+<<<<<<< HEAD
     m_LoopTime: 0
+=======
+    m_LoopTime: 1
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0

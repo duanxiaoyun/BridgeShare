@@ -28,6 +28,11 @@ public class GameUI : UIBaseView {
             starUI.SetStarNum(count);
     }
 
+    public void SetStarNum(int count) {
+        if(starUI != null)
+            starUI.SetStarNum(count);
+    }
+
     public void SetTime(float time){
         txt_time.text = Mathf.Ceil(time).ToString();
         if (timeUI != null)

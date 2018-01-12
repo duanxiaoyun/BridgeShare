@@ -20,6 +20,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Animations/PushBall/G_Player/G_Player.controller
   - m_Name: GameOver
     m_Type: 9
     m_DefaultFloat: 0
@@ -27,17 +28,23 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: HighScore
+=======
+  - m_Name: Win
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Animations/PushBall/G_Player/G_Player.controller
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Animations/PushBall/G_Player/G_Player.controller
   - m_Name: Win
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+=======
+>>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Animations/PushBall/G_Player/G_Player.controller
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
