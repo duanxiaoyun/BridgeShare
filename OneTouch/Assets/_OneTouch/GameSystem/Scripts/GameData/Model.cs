@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class GameModel
+public class GameCategory
 {
     public string name;
     public LevelName sceneName;
@@ -22,6 +22,28 @@ public enum ScoreType
     Nice,
     Great,
     Perfect
+}
+
+
+public enum GamePropType
+{
+    Water,
+    Bread
+}
+
+
+public struct JumpRuleData
+{
+    public ScoreType type;
+    public int score;
+    public int hp;
+
+    public void SetData(ScoreType type, int score, int hp)
+    {
+        this.type = type;
+        this.score = score;
+        this.hp = hp;
+    }
 }
 
 [Serializable]
@@ -43,4 +65,24 @@ public class ScoreItem{
         totalHP += hp;
         count++;
     }
+}
+/// <summary>
+/// 游戏记录，
+/// </summary>
+public class GameRecord {
+    /// <summary>
+    /// 分数
+    /// </summary>
+    public int score;
+    /// <summary>
+    /// 星星
+    /// </summary>
+    public int star;
+}
+
+[Serializable]
+public class User {
+    public int sex;
+    public string name;
+    public int coin;
 }

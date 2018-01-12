@@ -9,28 +9,24 @@ public class UIGameSelectItem : UIBaseView {
     public Text txt_title;
     public Image img_icon;
     public Button btn_start;
-    public List<Toggle> starList;
+    public Button btn_resetStar;
+    public UIStarController starController;
     public UnityAction<LevelName> onStartGame;
+    public UnityAction<UIGameSelectItem, LevelName> onResetStar;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         btn_start.onClick.AddListener(OnClickStart);
-	}
+        btn_resetStar.onClick.AddListener(OnClickResetStar);
+
+    }
 
     public void SetTitle(string title){
         txt_title.text = title;
     }
 
     public void SetStarNum(int starCount){
-        starCount = Mathf.Clamp(starCount, 0, starList.Count);
-        for (int i = 0; i < starCount; i++)
-        {
-            starList[i].isOn = true;
-        }
-        for (int i = starCount; i < starList.Count; i++)
-        {
-            starList[i].isOn = false;
-        }
+        starController.SetStarNum(starCount);
     }
 
     public void SetIcon(Sprite spr_icon){
@@ -40,5 +36,10 @@ public class UIGameSelectItem : UIBaseView {
     void OnClickStart(){
         if (onStartGame != null)
             onStartGame(gameSence);
+    }
+
+    void OnClickResetStar() {
+        if (onResetStar != null)
+            onResetStar(this,gameSence);
     }
 }

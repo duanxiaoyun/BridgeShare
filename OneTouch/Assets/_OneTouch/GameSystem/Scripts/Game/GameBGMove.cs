@@ -6,8 +6,6 @@ using DG.Tweening;
 
 public class GameBGMove : UIBaseView {
     public RectTransform content;
-    public Texture2D textrue_bg1;
-    public Texture2D textrue_bg2;
     public RawImage rawImg_bg1;
     public RawImage rawImg_bg2;
     bool isMoveUV = false;

@@ -20,6 +20,14 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        //设置屏幕自动旋转， 并置支持的方向
+        Screen.orientation = ScreenOrientation.AutoRotation;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+
         menu_mainGame.button.onClick.AddListener(LevelManager.GotoGameMenu);
         menu_propGame.button.onClick.AddListener(LevelManager.GotoBonusGames);
 

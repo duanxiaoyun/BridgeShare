@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PushBallController : MonoBehaviour {
-    public GameController game;
+    public GameController gameController;
     public PushBallPlayer player;
     public RectTransform content;
     public UITouchLine linePrefab;
@@ -14,12 +14,14 @@ public class PushBallController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
-	}
+        gameController.gameTime.onTimeOver += OnTimeOver;
+        gameController.playerHP.onPlayerDead += OnPlayerDead;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if(game.isGameStart && !game.isGameOver){
+        if(gameController.isGameStart && !gameController.isGameOver){
             nextTime -= Time.deltaTime; 
             if(nextTime<0){
                 if (count < 2)
@@ -80,7 +82,18 @@ public class PushBallController : MonoBehaviour {
         nextTime = 0;
         count--;
         //Debug.Log(type + "  :  " + score + "  :  " + usedTime);
-        game.AddScore(type, score, hp);
+        gameController.AddScore(type, score, hp);
         player.OnTouchLineComplete(isSuccess,type);
+    }
+
+    void OnTimeOver() {
+        if (!gameController.playerHP.isDead) {
+            //GameArchive.AddJumpStar(1);
+            player.PlayWin();
+        }
+    }
+
+    void OnPlayerDead() {
+        player.PlayLose();
     }
 }

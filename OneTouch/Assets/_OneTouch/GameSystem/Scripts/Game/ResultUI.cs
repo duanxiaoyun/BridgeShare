@@ -1,6 +1,8 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultUI : RecordUI {
+    public Button btn_back;
     public Button btn_replay;
     public Text txt_miss;
     public Text txt_bad;
@@ -10,13 +12,14 @@ public class ResultUI : RecordUI {
 
 	// Use this for initialization
 	void Start () {
-        btn_replay.onClick.AddListener(LevelManager.GotoGameMenu);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+        btn_back.onClick.AddListener(LevelManager.GotoGameMenu);
+        btn_replay.onClick.AddListener(LevelManager.Replay);
+    }
+
+    // Update is called once per frame
+    void Update () {
+    }
 
     public void SetMiss(int num)
     {

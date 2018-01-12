@@ -13,12 +13,15 @@ public class PauseUI : RecordUI {
     public Button btn_resume;
     public UnityAction<bool> onMusicToggle, onSoundToggle;
 
+    public GameTime gameTime;
+
 	// Use this for initialization
 	void Start () {
         btn_exit.onClick.AddListener(LevelManager.GotoGameMenu);
         tog_music.onValueChanged.AddListener(OnMusicToggle);
         tog_sound.onValueChanged.AddListener(OnSoundToggle);
-	}
+        btn_exit.onClick.AddListener(gameTime.ResumeGame);
+    }
 	
 	// Update is called once per frame
 	void Update () {

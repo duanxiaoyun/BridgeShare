@@ -15,8 +15,6 @@ public class PushBallPlayer : MonoBehaviour
     public Image BallImage;
     public GameBGMove bg1;
 
-    public GameController GameController1;
-
     public Image LevelImage;
 
     public Sprite[] LeveliPics;
@@ -27,15 +25,15 @@ public class PushBallPlayer : MonoBehaviour
 
     //private  animator Playerani;
     // Use this for initialization
-    void Start () {
+    void Start() {
 
         Playeranim = PlayerImage.GetComponent<Animator>();
         isRunning = false;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (isRunning)
         {
             BallImage.transform.Rotate(new Vector3(0, 0, 1), -5f);
@@ -45,12 +43,15 @@ public class PushBallPlayer : MonoBehaviour
         {
             bg1.PauseGame();
         }
+    }
 
-        if (GameController1.isGameOver && GameController1.playerHP.currentHP >= 0)
-        {
-            Playeranim.SetBool("Win", true);
-        }
-	}
+    public void PlayWin() {
+        Playeranim.SetBool("Win", true);
+    }
+
+    public void PlayLose() {
+        Debug.LogError("Add Lose Animation");
+    }
 
     public void OnTouchLineComplete(bool isSuccess,ScoreType type)
     {

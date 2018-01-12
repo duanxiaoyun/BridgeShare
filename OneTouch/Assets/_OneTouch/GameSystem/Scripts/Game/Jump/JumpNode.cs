@@ -27,9 +27,9 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
     public ParticleSystem par_3;
     public ParticleSystem par_4;
 
-    public Image LevelImage;
-    public Sprite[] LevelSprites;
-   
+    public Image img_level;
+    public Sprite[] sprLevelList;
+
 
     public float radius{ get { return rectTransform.sizeDelta.x; } set { rectTransform.sizeDelta = new Vector2(value, value); } }
     public Vector2 center { get { return rectTransform.anchoredPosition; }  set{rectTransform.anchoredPosition = value; } }
@@ -37,7 +37,7 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
     public float lifetime = 5;
     public float currentLifeTime;
     public float usedTime { get { return lifetime - currentLifeTime; } }
-    public UnityAction<JumpNode,bool, float> onComplete;
+    public UnityAction<JumpNode,bool, float,Vector2> onComplete;
     public UnityAction onNodeDestroy;
 
 	// Use this for initialization
@@ -52,7 +52,7 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
             currentLifeTime -= Time.deltaTime;
             if (currentLifeTime < 0)
             {
-                InvokeComplete(false);
+                InvokeComplete(false,false,Vector2.zero);
             }
         }
 	}
@@ -91,52 +91,24 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
     public void OnPointerClick(PointerEventData eventData)
     {
         if(interactable){
-            InvokeComplete(true);
+            InvokeComplete(true,true, eventData.position);
         }
     }
 
     public void ShowResult(ScoreType type)
     {
-        switch (type)
-        {
-            case ScoreType.Perfect:
-                //Debug.Log("在这里播放 Node Perfect 的效果");
-                //LevelImage.overrideSprite = LevelSprites[0];
-                //LevelImage.overrideSprite = Resources.Load("Perfect", typeof(Sprite)) as Sprite;
-                //StartCoroutine(WaitShowLevel(1f));
-                break;
-            case ScoreType.Great:
-                //Debug.Log("在这里播放 Node Great 的效果");
-                //LevelImage.overrideSprite = LevelSprites[1];
-                //LevelImage.overrideSprite = Resources.Load("Great", typeof(Sprite)) as Sprite;
-                //StartCoroutine(WaitShowLevel(1f));
-                break;
-            case ScoreType.Nice:
-                //Debug.Log("在这里播放 Node Nice 的效果");
-                //LevelImage.overrideSprite = LevelSprites[2];
-                //StartCoroutine(WaitShowLevel(1f));
-                break;
-            case ScoreType.Bad:
-                //Debug.Log("在这里播放 Node Bad 的效果");
-                //LevelImage.overrideSprite = LevelSprites[3];
-                //StartCoroutine(WaitShowLevel(1f));
-                break;
-            case ScoreType.Miss:
-                //Debug.Log("在这里播放 Node Miss 的效果");
-                //LevelImage.overrideSprite = LevelSprites[4];
-                //StartCoroutine(WaitShowLevel(1f));
-                break;
-        }
+        img_level.overrideSprite = sprLevelList[((int)type)];
+        img_level.enabled = true;
     }
 
-    void InvokeComplete(bool isSuccess)
+    void InvokeComplete(bool isSuccess,bool isClick,Vector2 clickPostion)
     {
         interactable = false;
         animator.gameObject.SetActive(false);
-        particles.SetActive(true);
-        StartCoroutine(WaitDestroy(1.3f));
+        if(isClick) particles.SetActive(true);
         if (onComplete != null)
-            onComplete(this,isSuccess, usedTime);
+            onComplete(this,isSuccess, usedTime, clickPostion);
+        StartCoroutine(WaitDestroy(isClick ? 0.4f : 0));
     }
 
     IEnumerator WaitDestroy(float time){
@@ -146,11 +118,11 @@ public class JumpNode : UIBaseView,IPointerClickHandler {
         Destroy(gameObject);
     }
 
-    IEnumerator WaitShowLevel(float time)
-    {
-        LevelImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(time);
-        LevelImage.gameObject.SetActive(false);
-    }
+    //IEnumerator WaitShowLevel(float time)
+    //{
+    //    LevelImage.gameObject.SetActive(true);
+    //    yield return new WaitForSeconds(time);
+    //    LevelImage.gameObject.SetActive(false);
+    //}
 
 }

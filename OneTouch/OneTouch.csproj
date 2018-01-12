@@ -94,6 +94,9 @@
     <Reference Include="DOTweenPro">
       <HintPath>Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets/_OneTouch/GameSystem/Scripts/Tools/LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -102,12 +105,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameArchive.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameBGMove.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameController.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameData.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameProp\GameProp.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameProp\GamePropController.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameRule.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameTime.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\GameUI.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\Jump\ImageNumber.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\Jump\JumpBGClick.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\Jump\JumpController.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\Jump\JumpNode.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\Jump\JumpPlayer.cs" />
@@ -124,8 +132,11 @@
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameData\Model.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameMenu\GameMenuController.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameMenu\UIGameSelectItem.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameMenu\UIStarController.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Main\MainController.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Main\UIMainMenuItem.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Tools\LitJsonExtension.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Tools\LitJsonUtils.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\UI\UIBaseView.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\XXX\ResourcesX\Sounds\Play\Units\EffectUnit.cs" />
