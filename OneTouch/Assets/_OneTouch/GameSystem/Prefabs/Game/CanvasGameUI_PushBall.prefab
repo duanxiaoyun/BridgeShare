@@ -82,11 +82,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!1 &1051350646957198
-=======
---- !u!1 &1027866611961592
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -240,7 +236,6 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   - component: {fileID: 224022570474236060}
   - component: {fileID: 222985615576558920}
   - component: {fileID: 114176528593509862}
@@ -248,18 +243,6 @@ GameObject:
   - component: {fileID: 114309418581389424}
   m_Layer: 5
   m_Name: Toggle (5)
-=======
-  - component: {fileID: 224066009618506258}
-  - component: {fileID: 223541046297144734}
-  - component: {fileID: 114072798697173260}
-  - component: {fileID: 114610116925639650}
-  - component: {fileID: 114604086049780116}
-  - component: {fileID: 114611989482278102}
-  - component: {fileID: 114664634081139402}
-  - component: {fileID: 114978938065976792}
-  m_Layer: 5
-  m_Name: CanvasGameUI_PushBall
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!1 &1674499313475486
 GameObject:
   m_ObjectHideFlags: 1
@@ -1263,8 +1245,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-=======
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!1 &1694002665271386
 GameObject:
   m_ObjectHideFlags: 1
@@ -3153,7 +3133,6 @@ MonoBehaviour:
   m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
@@ -3163,31 +3142,6 @@ MonoBehaviour:
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!114 &114378067501162196
-=======
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 421dbeccf80e21146b10698709200c58, type: 3}
-    m_FontSize: 100
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 100
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 30
---- !u!114 &114409088052385242
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3786,30 +3740,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!114 &114539206257800076
-=======
---- !u!114 &114604086049780116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1087445061804270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee140d2b04b7124ba778f7d5c8e51cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  gameUI: {fileID: 114135369608429676}
-  pauseUI: {fileID: 114136627839284886}
-  resultUI: {fileID: 114246559652985776}
-  gameTime: {fileID: 114611989482278102}
-  playerHP: {fileID: 114664634081139402}
-  gameData: {fileID: 114978938065976792}
-  isGameOver: 0
---- !u!114 &114604259575377528
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -5856,7 +5787,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!114 &114961440747622496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5872,9 +5802,6 @@ MonoBehaviour:
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!114 &114977834454260386
-=======
---- !u!114 &114973361415692098
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -6746,7 +6673,6 @@ RectTransform:
   m_Father: {fileID: 224700249803657284}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -480}
@@ -6766,13 +6692,10 @@ RectTransform:
   m_Father: {fileID: 224279556825467340}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224039492441151488
 RectTransform:
@@ -6791,8 +6714,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 120, y: 0}
   m_SizeDelta: {x: -300, y: -60}
-=======
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224049234079078406
 RectTransform:
@@ -6921,7 +6842,6 @@ RectTransform:
   m_Father: {fileID: 224899171029463696}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -250}
@@ -6944,12 +6864,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 120, y: -32.5}
   m_SizeDelta: {x: -300, y: -115}
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224130404723367092
 RectTransform:
@@ -7026,19 +6940,11 @@ RectTransform:
   m_Father: {fileID: 224899171029463696}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -640}
   m_SizeDelta: {x: 679, y: 140}
   m_Pivot: {x: 0.5, y: 1}
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 --- !u!224 &224151554696944782
 RectTransform:
   m_ObjectHideFlags: 1
@@ -7360,21 +7266,12 @@ RectTransform:
   m_Father: {fileID: 224871738087229054}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -320}
   m_SizeDelta: {x: -40, y: 120}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224347997358811796
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224351929950639150
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -7502,17 +7399,10 @@ RectTransform:
   m_Father: {fileID: 224891096687879154}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 108.5, y: -75}
   m_SizeDelta: {x: 100, y: 100}
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224432112692229196
 RectTransform:
@@ -7528,15 +7418,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1, y: -1}
   m_SizeDelta: {x: 2, y: 2}
-=======
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224436806956032222
 RectTransform:
@@ -7571,15 +7455,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1, y: -1}
   m_SizeDelta: {x: 2, y: 2}
-=======
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224473485982215432
 RectTransform:
@@ -7761,17 +7639,10 @@ RectTransform:
   m_Father: {fileID: 224891096687879154}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 468.5, y: -75}
   m_SizeDelta: {x: 100, y: 100}
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224553040773500404
 RectTransform:
@@ -7860,17 +7731,10 @@ RectTransform:
   m_Father: {fileID: 224891096687879154}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 348.5, y: -75}
   m_SizeDelta: {x: 100, y: 100}
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224610473615573250
 RectTransform:
@@ -8282,21 +8146,12 @@ RectTransform:
   m_Father: {fileID: 224899171029463696}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 717, y: 174}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224857081045591030
-=======
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224848388558606466
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/Game/CanvasGameUI_PushBall.prefab
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

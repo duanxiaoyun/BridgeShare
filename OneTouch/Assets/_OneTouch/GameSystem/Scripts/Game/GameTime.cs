@@ -9,11 +9,7 @@ public class GameTime : MonoBehaviour {
 
     public bool isStart { get; private set; }
     public bool isPause { get; private set; }
-<<<<<<< HEAD
     public bool isTimeOver { get;  set; }
-=======
-    public bool isTimeOver { get; private set; }
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
     public UnityAction onTimeOver;
 
 	// Use this for initialization

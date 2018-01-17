@@ -95,10 +95,7 @@ public class GameController : MonoBehaviour {
     void OnPlayerDead()
     {
         isGameOver = true;
-<<<<<<< HEAD
         gameTime.isTimeOver = true;
-=======
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
         WaitShowResult();
         if (onGameOver != null)
             onGameOver(false);
@@ -116,7 +113,6 @@ public class GameController : MonoBehaviour {
 
     IEnumerator WaitShowResult(float time)
     {
-<<<<<<< HEAD
         yield return new WaitForSeconds(time);//播放角色的的动画(Gameove/Win/Highscore)
 
         //int Effeindex = GameArchive.IsHighRecord() ? 2 : 1;//判断有没有破纪录
@@ -133,13 +129,6 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(2.0f);// 播放游戏的gameover的动画效果。
             gameEffs[2].SetActive(false);
         }
-=======
-        yield return new WaitForSeconds(time);//播放角色的gameover的动画
-
-        gameEffs[1].SetActive(true);
-        yield return new WaitForSeconds(2.0f);// 播放游戏的gameover的动画效果。
-        gameEffs[1].SetActive(false);
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
 
         ShowResult();
     }

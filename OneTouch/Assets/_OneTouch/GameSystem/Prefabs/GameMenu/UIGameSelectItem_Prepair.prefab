@@ -563,11 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-<<<<<<< HEAD:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/GameMenu/UIGameSelectItem_Prepair.prefab
   m_Text: "\uC218\uC601"
-=======
-  m_Text: 
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff:OneTouch/Assets/_OneTouch/GameSystem/Prefabs/GameMenu/UIGameSelectItem_Prepair.prefab
 --- !u!114 &114271652542568184
 MonoBehaviour:
   m_ObjectHideFlags: 1

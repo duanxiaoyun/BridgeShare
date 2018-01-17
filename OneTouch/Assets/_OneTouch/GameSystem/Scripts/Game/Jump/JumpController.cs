@@ -19,10 +19,6 @@ public class JumpController : MonoBehaviour {
     public float doubleScoreTime = 0;
  
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c4da8e9d2da7157464ddb789010b6c34d059dfff
     // Use this for initialization
     void Start () {
         bgClick.onClickBackground += OnClickBackground;
