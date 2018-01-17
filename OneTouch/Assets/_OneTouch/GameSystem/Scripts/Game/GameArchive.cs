@@ -7,8 +7,37 @@ using UnityEngine;
 /// </summary>
 public class GameArchive {
 
-#region JumpRecord
-    
+    #region User
+    private static string key_user = "Key_User";
+    private static User _user;
+    public static User user { get { return _user ?? (_user = GetUser()); } }
+
+    public static User GetUser()
+    {
+        if (_user == null)
+        {
+            string data = PlayerPrefs.GetString(key_user, "");
+            if (string.IsNullOrEmpty(data))
+                _user = new User();
+            else
+                _user = LitJsonUtils.ParseUser(data);
+        }
+        return _user;
+    }
+
+    public static void SaveUser() {
+        PlayerPrefs.SetString(key_user, LitJsonUtils.ToUserString(GetUser()));
+    }
+
+    public static void CleanUser() {
+        _user = new User();
+        PlayerPrefs.SetString(key_user,"");
+
+    }
+    #endregion
+
+    #region JumpRecord
+
     private static GameArchiveTemplate _jumpRecord;
     public static GameArchiveTemplate jumpRecord { get { return _pushBallRecord ?? (_pushBallRecord = new GameArchiveTemplate("JumpHighRecord")); } }
     //{

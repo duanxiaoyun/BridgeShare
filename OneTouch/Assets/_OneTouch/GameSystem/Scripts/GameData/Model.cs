@@ -81,9 +81,20 @@ public class GameRecord {
     public int star;
 }
 
+public enum Sex {
+    Girl,
+    Boy
+}
+
 [Serializable]
 public class User {
-    public int sex;
+    public Sex sex;
     public string name;
     public int coin;
+    // GameName_Sex
+    // Ex:  Jump_Girl
+    // Ex:  Jump_Boy
+
+
 }
+

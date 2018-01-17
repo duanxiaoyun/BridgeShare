@@ -2,6 +2,9 @@
 
 public class GameBasePlayer : MonoBehaviour {
 
+    private RectTransform m_RectTransform;
+    public RectTransform rectTransform { get { return m_RectTransform ?? (m_RectTransform = GetComponent<RectTransform>()); } }
+
     public GameObject player;
     protected Animator playerAnim;
     
@@ -31,4 +34,10 @@ public class GameBasePlayer : MonoBehaviour {
         playerAnim.SetTrigger("Miss");
     }
 
+
+    public static GameObject LoadPlayer(LevelName level,Sex sex) {
+        string path = string.Format("{0}_{1}", level,sex);
+        Debug.Log(path);
+        return Instantiate(Resources.Load(path)) as GameObject;
+    }
 }

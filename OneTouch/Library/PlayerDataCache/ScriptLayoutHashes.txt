@@ -120,7 +120,7 @@ d004f6b8136be9c41e12069ac31e315c Assembly-CSharp.dll:.EffectUnit
 9d1e138111d33aad3c62dab4e71ae0e6 Assembly-CSharp.dll:.UIBaseView
 3ce46dd1c34a0c4afd2184e5f4595424 Assembly-CSharp.dll:.GamePropController
 04f0157f23058894831e8a9eb3b66e60 Assembly-CSharp.dll:.GameBaseNode
-38b5af911ac1291bf2336483d3bd7be8 Assembly-CSharp.dll:.PushBallController
+5609a81e022ab36e96d0432e081dfde8 Assembly-CSharp.dll:.PushBallController
 f266a453cd4bfbe81533762a3e3589f4 DOTween.dll:DG.Tweening.Core.DOTweenComponent
 dbd1ff5acfd8c74434eaa7f20d9bda02 DOTween.dll:DG.Tweening.Core.DOTweenSettings
 bef0fd2925cee68e02be3d0e47fb604e Assembly-CSharp.dll:.PlayerHP
@@ -156,12 +156,12 @@ bcde5a4f38b349c4315d84b6a707c422 DOTweenPro.dll:DG.Tweening.DOTweenPath
 dedd20a3330775f7fab846e971d88e43 Assembly-CSharp.dll:.UILine
 45afc8a3694719992d6c55c833e268d0 Assembly-CSharp.dll:.ImageNumber
 7a04a9a20828e2f44cd0ac904ab345ed Assembly-CSharp.dll:DG.Tweening.DOTweenAnimation
+b6028ae35ae8992a6e383fd623c816c0 Assembly-CSharp.dll:.GameBGMiss
 952cf6b391367d8d3e7760c5c55cb458 Assembly-CSharp.dll:.RecordUI
 8ccf9a71234a42570c9dc6dd7e718624 Assembly-CSharp.dll:.PushBallPlayer
 0883d893555f11c73a961ca799106611 Assembly-CSharp.dll:.JumpBGClick
 04f0157f23058894831e8a9eb3b66e60 Assembly-CSharp.dll:.UICircle
-848fc94bbefeff8e38266e134890b283 Assembly-CSharp.dll:.JumpController
+6f0f19890b0fc6de0e706558c05fbdba Assembly-CSharp.dll:.JumpController
 0ff4ee0c5f48a0d606e6004285ffb740 Assembly-CSharp.dll:.UIMainMenuItem
 ebc09f9aaa3b8091000deda3c74dfb57 Assembly-CSharp.dll:.PauseUI
 2b5bd81c259c691324a17af9a3e97e85 Assembly-CSharp.dll:.GameBasePlayer
-b6028ae35ae8992a6e383fd623c816c0 Assembly-CSharp.dll:.GameBGMiss

@@ -7,6 +7,7 @@ public class PushBallController : MonoBehaviour
     public Canvas canvas;
     public GameController gameController;
     public GameBGMiss bgMiss;
+    public RectTransform rect_playerParent;
     public PushBallPlayer player;
     public RectTransform content;
     public UITouchLine linePrefab;
@@ -14,10 +15,19 @@ public class PushBallController : MonoBehaviour
     public int currentNodeCount = 0;
     public float nextTime = 0;
 
-	// Use this for initialization
-	void Start () {
-        //gameController.gameTime.onTimeOver += OnTimeOver;
-        //gameController.playerHP.onPlayerDead += OnPlayerDead;
+
+    private void Awake()
+    {
+        //GameArchive.user.coin = 100;
+        //GameArchive.user.name = "PlayerName";
+        //GameArchive.user.sex = Sex.Boy;
+        //GameArchive.SaveUser();
+        player = PushBallPlayer.LoadPlayer(LevelName.PushBall, GameArchive.user.sex).GetComponent<PushBallPlayer>();
+        player.rectTransform.SetParent(rect_playerParent, false);
+    }
+
+    // Use this for initialization
+    void Start () {
         gameController.highRecord = GameArchive.pushBallRecord.GetRecord();
         gameController.UpdateStar();
         gameController.onGameOver += OnGameOver;

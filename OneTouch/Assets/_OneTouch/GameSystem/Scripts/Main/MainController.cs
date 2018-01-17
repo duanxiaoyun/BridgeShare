@@ -30,7 +30,7 @@ public class MainController : MonoBehaviour {
 
         menu_mainGame.button.onClick.AddListener(LevelManager.GotoGameMenu);
         menu_propGame.button.onClick.AddListener(LevelManager.GotoBonusGames);
-
+       
     }
 	
 	// Update is called once per frame

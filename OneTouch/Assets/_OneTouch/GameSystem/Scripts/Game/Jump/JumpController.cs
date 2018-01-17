@@ -9,6 +9,7 @@ public class JumpController : MonoBehaviour {
     public JumpBGClick bgClick;
     public GameController gameController;
     public GamePropController propController;
+    public RectTransform rect_playerParent;
     public JumpPlayer player;
     public RectTransform content;
     public JumpNode nodePrefab;
@@ -16,7 +17,16 @@ public class JumpController : MonoBehaviour {
     public int currentNodeCount = 0;
     public float nextTime = 0;
     public List<NodeSkin> skinList;
- 
+
+    private void Awake()
+    {
+        //GameArchive.user.coin = 100;
+        //GameArchive.user.name = "PlayerName";
+        //GameArchive.user.sex = Sex.Boy;
+        //GameArchive.SaveUser();
+        player = JumpPlayer.LoadPlayer(LevelName.Jump,GameArchive.user.sex).GetComponent<JumpPlayer>();
+        player.rectTransform.SetParent(rect_playerParent,false);
+    }
 
     // Use this for initialization
     void Start () {

@@ -33,7 +33,7 @@ public class LitJsonUtils {
     public static User ParseUser(JsonData json)
     {
         User model = new User();
-        model.sex = json.OptInt32("sex");
+        model.sex = (Sex)json.OptInt32("sex");
         model.name = json.OptString("name");
         model.coin = json.OptInt32("coin");
         return model;
@@ -42,7 +42,7 @@ public class LitJsonUtils {
     public static string ToUserString(User model)
     {
         JsonData json = new JsonData();
-        json["sex"] = model.sex;
+        json["sex"] = (int)model.sex;
         json["name"] = model.name;
         json["coin"] = model.coin;
         return json.ToJson();
