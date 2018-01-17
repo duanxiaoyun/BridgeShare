@@ -32,7 +32,7 @@ public enum GamePropType
 }
 
 
-public struct JumpRuleData
+public struct GameRuleData
 {
     public ScoreType type;
     public int score;
@@ -69,6 +69,7 @@ public class ScoreItem{
 /// <summary>
 /// 游戏记录，
 /// </summary>
+[Serializable]
 public class GameRecord {
     /// <summary>
     /// 分数

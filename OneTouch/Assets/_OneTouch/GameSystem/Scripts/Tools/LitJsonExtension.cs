@@ -5,7 +5,7 @@ using System;
 
 namespace LitJson{
     public static class LitJsonExtension {
-        [CLSCompliant(false)]
+        //[CLSCompliant(false)]
         public static void WriteProperty(this JsonWriter writer,string key,ulong value){
             writer.WritePropertyName(key);
             writer.Write(value);

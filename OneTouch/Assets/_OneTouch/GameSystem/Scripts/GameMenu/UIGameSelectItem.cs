@@ -12,12 +12,12 @@ public class UIGameSelectItem : UIBaseView {
     public Button btn_resetStar;
     public UIStarController starController;
     public UnityAction<LevelName> onStartGame;
-    public UnityAction<UIGameSelectItem, LevelName> onResetStar;
+    public UnityAction<UIGameSelectItem, LevelName> onReset;
 
     // Use this for initialization
     void Start () {
         btn_start.onClick.AddListener(OnClickStart);
-        btn_resetStar.onClick.AddListener(OnClickResetStar);
+        btn_resetStar.onClick.AddListener(OnClickReset);
 
     }
 
@@ -38,8 +38,8 @@ public class UIGameSelectItem : UIBaseView {
             onStartGame(gameSence);
     }
 
-    void OnClickResetStar() {
-        if (onResetStar != null)
-            onResetStar(this,gameSence);
+    void OnClickReset() {
+        if (onReset != null)
+            onReset(this,gameSence);
     }
 }

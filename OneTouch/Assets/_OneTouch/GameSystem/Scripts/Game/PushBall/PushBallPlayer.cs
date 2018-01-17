@@ -1,96 +1,68 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PushBallPlayer : MonoBehaviour
+public class PushBallPlayer : GameBasePlayer
 {
-
-    public Image PlayerImage;
-    public Image BallImage;
-    public GameBGMove bg1;
-
-    public Image LevelImage;
-
-    public Sprite[] LeveliPics;
-
-    private Animator Playeranim;
-
+    public Image ballImage;
+    public GameBGMove backGround;
+    
     bool isRunning;
 
-    //private  animator Playerani;
     // Use this for initialization
-    void Start() {
-
-        Playeranim = PlayerImage.GetComponent<Animator>();
+    protected override void Start()
+    {
+        base.Start();
         isRunning = false;
-
     }
 
     // Update is called once per frame
     void Update() {
         if (isRunning)
         {
-            BallImage.transform.Rotate(new Vector3(0, 0, 1), -5f);
-            bg1.ResumeGame();
+            ballImage.transform.Rotate(new Vector3(0, 0, 1), -5f);
+            backGround.ResumeGame();
         }
         else
         {
-            bg1.PauseGame();
+            backGround.PauseGame();
         }
     }
-
-    public void PlayWin() {
-        Playeranim.SetBool("Win", true);
-    }
-
-    public void PlayLose() {
-        Debug.LogError("Add Lose Animation");
-    }
-
-    public void OnTouchLineComplete(bool isSuccess,ScoreType type)
+    
+    public void OnTouchLineComplete(TouchLineStatus status, ScoreType type)
     {
         switch (type){
             case ScoreType.Perfect:
                 //Debug.Log("Perfect ");
-                Playeranim.SetBool("IsRun", true);
-                LevelImage.overrideSprite = LeveliPics[0];
+                playerAnim.SetBool("IsRun", true);
                 
                 StartRunAnim(5f);
 
                 break;
             case ScoreType.Great:
                 //Debug.Log(" Great ");
-                Playeranim.SetBool("IsRun", true);
-                LevelImage.overrideSprite = LeveliPics[1];
+                playerAnim.SetBool("IsRun", true);
                 StartRunAnim(5f);
 
                 break;
             case ScoreType.Nice:
                 //Debug.Log(" Nice ");
-                Playeranim.SetBool("IsRun", true);
-                LevelImage.overrideSprite = LeveliPics[2];
+                playerAnim.SetBool("IsRun", true);
                 StartRunAnim(4f);
 
                 break;
             case ScoreType.Bad:
                 //Debug.Log(" Bad ");
-                LevelImage.overrideSprite = LeveliPics[3];
 
                 StartRunAnim(1f);
 
                 break;
             case ScoreType.Miss:
                 //Debug.Log("Miss ");
-                LevelImage.overrideSprite = LeveliPics[4];
                 isRunning = false;
 
-                Playeranim.SetTrigger("Miss");
+                playerAnim.SetTrigger("Miss");
 
                 break;
         }
@@ -107,7 +79,7 @@ public class PushBallPlayer : MonoBehaviour
         while (isRunning)
         {
             yield return new WaitForSeconds(time);
-            Playeranim.SetBool("IsRun", false);
+            playerAnim.SetBool("IsRun", false);
             isRunning = false;
         }
     }

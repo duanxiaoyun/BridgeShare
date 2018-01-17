@@ -12,10 +12,12 @@ public class GameController : MonoBehaviour {
     public PlayerHP playerHP;
     public GameData gameData;
     public bool isGameStart{ get { return gameTime.isStart; }}
-    public bool isGameOver;
+    public bool isGameOver { get; private set; }
+    public bool isGaming { get { return isGameStart && !isGameOver; } }
     public GameRecord highRecord;
     public UnityAction onGameStart;
     public UnityAction<bool> onGameOver;
+    public float doubleScoreTime = 0;
 
     public GameObject[] gameEffs;
 
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour {
         gameTime.onTimeOver += OnTimeOver;
         playerHP.onPlayerDead += OnPlayerDead;
         playerHP.onHPChanged += OnHPChanged;
+        doubleScoreTime = 0;
 
         gameEffs[0].SetActive(true);
         yield return new WaitForSeconds(3.25f);
@@ -41,6 +44,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
         if (!isGameOver && gameTime.isStart && !gameTime.isTimeOver)
         {
+            doubleScoreTime -= Time.deltaTime;
             gameUI.SetTime(gameTime.currentTime);
         }
 	}
@@ -123,7 +127,7 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(2.0f);// 播放游戏的gameover的动画效果。
             gameEffs[1].SetActive(false);
         }
-        else if(GameArchive.IsHighRecord())
+        else if(GameArchive.jumpRecord.IsHighRecord())
         {
             gameEffs[2].SetActive(true);
             yield return new WaitForSeconds(2.0f);// 播放游戏的gameover的动画效果。
@@ -154,6 +158,25 @@ public class GameController : MonoBehaviour {
     public void AddScore(ScoreType type,int score,int hp){
         gameData.AddScore(type,score,hp);
         gameUI.SetScore(gameData.totalScore);
+        playerHP.AddHP(hp);
+    }
+
+    public void OnPickWater(float doubleScoreTime)
+    {
+        if (this.doubleScoreTime < 0)
+            this.doubleScoreTime = 0;
+        this.doubleScoreTime += doubleScoreTime;
+    }
+
+    public void CalculateScore(GameRuleData data)
+    {
+        if (doubleScoreTime > 0 && data.score > 0)
+            data.score *= 2;
+        AddScore(data.type, data.score, data.hp);
+    }
+
+    public void OnPickBread(int hp)
+    {
         playerHP.AddHP(hp);
     }
 }

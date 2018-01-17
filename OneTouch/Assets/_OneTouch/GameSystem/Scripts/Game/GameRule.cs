@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameRule  {
 
+    #region JumpRule
     public static ScoreType GetJumpScoreType(bool isSuccess, float usedTime, float distance)
     {
         ScoreType type = ScoreType.Miss;
@@ -30,9 +31,9 @@ public class GameRule  {
         return type;
     }
 
-    public static JumpRuleData GetJumpRuleData(ScoreType type)
+    public static GameRuleData GetJumpRuleData(ScoreType type)
     {
-        JumpRuleData ruleData = new JumpRuleData();
+        GameRuleData ruleData = new GameRuleData();
         switch (type)
         {
             case ScoreType.Perfect:
@@ -54,15 +55,17 @@ public class GameRule  {
         return ruleData;
     }
 
-    public static JumpRuleData GetJumpResult(bool isSuccess, float usedTime,float distance)
+    public static GameRuleData GetJumpResult(bool isSuccess, float usedTime,float distance)
     {
         return GetJumpRuleData(GetJumpScoreType(isSuccess,usedTime,distance));
     }
 
-    public static JumpRuleData ClickJumpBackground() {
+    public static GameRuleData ClickJumpBackground() {
         return GetJumpRuleData(ScoreType.Miss);
     }
+    #endregion
 
+    #region PropRule
     public static float GetWaterDoubleScoreTime() {
         return Random.Range(3f,5f);
     }
@@ -70,4 +73,60 @@ public class GameRule  {
     public static int GetBreadHPCount() {
         return Random.Range(3,5);
     }
+    #endregion
+
+    #region PushBallRule
+    public static ScoreType GetPushBallScoreType(bool isSuccess, float distance)
+    {
+
+        //Debug.Log("distance:" + distance);
+        //ScoreType type = ScoreType.Miss;
+        //if (isSuccess)
+        //{
+        //    if (distance <= 1)
+        //    {
+        //        type = ScoreType.Perfect;
+        //    }
+        //    else if (distance <= 2)
+        //    {
+        //        type = ScoreType.Great;
+        //    }
+        //    else if (distance <= 3)
+        //    {
+        //        type = ScoreType.Nice;
+        //    }
+        //    else if (distance <= 4)
+        //    {
+        //        type = ScoreType.Bad;
+        //    }
+        //}
+        return isSuccess? ScoreType.Perfect : ScoreType.Miss;
+    }
+
+    public static GameRuleData GetPushBallRuleData(ScoreType type,int count)
+    {
+        GameRuleData ruleData = new GameRuleData();
+        switch (type)
+        {
+            case ScoreType.Perfect:
+                ruleData.SetData(ScoreType.Perfect, 50, 0);
+                break;
+            case ScoreType.Great:
+                ruleData.SetData(ScoreType.Great, 40, 0);
+                break;
+            case ScoreType.Nice:
+                ruleData.SetData(ScoreType.Nice, 20, 0);
+                break;
+            case ScoreType.Bad:
+                ruleData.SetData(ScoreType.Bad, 0, 0);
+                break;
+            default:
+                ruleData.SetData(ScoreType.Miss, -10, -10);
+                break;
+        }
+        ruleData.score *= count;
+        Debug.Log("count:"+count + "  score="+ ruleData.score);
+        return ruleData;
+    }
+    #endregion
 }

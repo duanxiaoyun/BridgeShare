@@ -15,7 +15,7 @@ public class GameMenuController : MonoBehaviour {
         btn_back.onClick.AddListener(OnClickBack);
         for (int i = 0; i < gameDataList.Count;i++){
             if (gameDataList[i].sceneName == LevelName.Jump) {
-                gameDataList[i].starNum = GameArchive.GetJumpStar();
+                gameDataList[i].starNum = GameArchive.jumpRecord.GetStar();
             }
             SetGameItem(gameUIList[i],gameDataList[i]);
         }
@@ -28,7 +28,7 @@ public class GameMenuController : MonoBehaviour {
         item.SetStarNum(data.starNum);
         item.gameSence = data.sceneName;
         item.onStartGame = OnStarGame;
-        item.onResetStar = OnResetStar;
+        item.onReset = OnReset;
     }
 
     void OnStarGame(LevelName sceneName)
@@ -36,16 +36,16 @@ public class GameMenuController : MonoBehaviour {
         LevelManager.GotoLevel(sceneName);
     }
 
-    void OnResetStar(UIGameSelectItem item,LevelName sceneName)
+    void OnReset(UIGameSelectItem item,LevelName sceneName)
     {
         int star = 0;
         item.SetStarNum(star);
         switch (sceneName) {
             case LevelName.Jump:
-                GameArchive.SetJumpStar(star);
+                GameArchive.jumpRecord.CleanRecord();
                 break;
             case LevelName.PushBall:
-                //GameArchive.SetPushBallStar(star);
+                GameArchive.pushBallRecord.CleanRecord();
                 break;
             case LevelName.FarJump:
                 //GameArchive.SetFarJumpStar(star);

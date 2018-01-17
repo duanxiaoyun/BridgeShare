@@ -15,18 +15,16 @@ public class JumpController : MonoBehaviour {
     public int maxNodeCount = 5;
     public int currentNodeCount = 0;
     public float nextTime = 0;
-    public List<JumpNodeSkin> skinList;
-    public float doubleScoreTime = 0;
+    public List<NodeSkin> skinList;
  
 
     // Use this for initialization
     void Start () {
         bgClick.onClickBackground += OnClickBackground;
-        propController.onPickWater += OnPickWater;
-        propController.onPickBread += OnPickBread;
-        doubleScoreTime = 0;
+        propController.onPickWater += gameController.OnPickWater;
+        propController.onPickBread += gameController.OnPickBread;
 
-        gameController.highRecord = GameArchive.GetJumpRecord();
+        gameController.highRecord = GameArchive.jumpRecord.GetRecord();
         gameController.UpdateStar();
         gameController.onGameOver += OnGameOver;
 
@@ -34,9 +32,8 @@ public class JumpController : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        if (gameController.isGameStart && !gameController.isGameOver)
+        if (gameController.isGaming)
         {
-            doubleScoreTime -= Time.deltaTime;
             nextTime -= Time.deltaTime;
             propController.UpdateCreate();
             if (nextTime < 0)
@@ -67,44 +64,32 @@ public class JumpController : MonoBehaviour {
     }
 
     void OnComplete(JumpNode node,bool isSuccess,float usedTime,Vector2 clickPosition){
-        float distance = float.MaxValue;
-        if (isSuccess) {
-			Vector2 pos;
-			if (RectTransformUtility.ScreenPointToLocalPointInRectangle (content, clickPosition, canvas.worldCamera, out pos)) {
-				distance = Vector2.Distance (pos, node.center);
-			}
+        if (gameController.isGaming)
+        {
+            float distance = float.MaxValue;
+            if (isSuccess)
+            {
+                Vector2 pos;
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(content, clickPosition, canvas.worldCamera, out pos))
+                {
+                    distance = Vector2.Distance(pos, node.center);
+                }
+            }
+            GameRuleData result = GameRule.GetJumpResult(isSuccess, usedTime, distance);
+            gameController.CalculateScore(result);
+            node.ShowResult(result.type);
+            player.OnNodeComplete(isSuccess, result.type);
         }
-        JumpRuleData result = GameRule.GetJumpResult(isSuccess, usedTime, distance);
-        CalculateScore(result, doubleScoreTime);
-        node.ShowResult(result.type);
-        player.OnNodeComplete(isSuccess, result.type);
-    }
-
-    void OnPickWater(float doubleScoreTime) {
-        if (this.doubleScoreTime < 0)
-            this.doubleScoreTime = 0;
-        this.doubleScoreTime += doubleScoreTime;
-    }
-
-    void OnPickBread(int hp)
-    {
-        gameController.playerHP.AddHP(hp);
     }
 
     private void OnClickBackground()
     {
         player.PlayMiss();
-        CalculateScore(GameRule.ClickJumpBackground(), doubleScoreTime);
-    }
-
-    void CalculateScore(JumpRuleData data, float doubleScoreTime) {
-        if (doubleScoreTime > 0 && data.score > 0)
-            data.score *= 2;
-        gameController.AddScore(data.type, data.score, data.hp);
+        gameController.CalculateScore(GameRule.ClickJumpBackground());
     }
 
     void OnNodeDestroy(){
-        nextTime = 0;
+        //nextTime = 0;
         currentNodeCount--;
     }
 
@@ -113,7 +98,7 @@ public class JumpController : MonoBehaviour {
     {
         if (isWin)  //!gameController.playerHP.isDead
         {
-            if (GameArchive.IsHighRecord())
+            if (GameArchive.jumpRecord.IsHighRecord())
             {
                 player.PlayHighScore();
             }
@@ -121,13 +106,13 @@ public class JumpController : MonoBehaviour {
             {
                 player.PlayWin();
             }
-            GameArchive.AddJumpStar(1);
+            GameArchive.jumpRecord.AddStar(1);
         }
         else { 
             player.PlayLose();
         }
 
-        GameArchive.SetJumpScore(gameController.gameData.totalScore);
+        GameArchive.jumpRecord.SetScore(gameController.gameData.totalScore);
     }
 
 }

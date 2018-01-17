@@ -8,92 +8,132 @@ using UnityEngine;
 public class GameArchive {
 
 #region JumpRecord
-    private const string Key_jumpHighRecord = "JumpHighRecord";
-    private static GameRecord _jumpRecord;
+    
+    private static GameArchiveTemplate _jumpRecord;
+    public static GameArchiveTemplate jumpRecord { get { return _pushBallRecord ?? (_pushBallRecord = new GameArchiveTemplate("JumpHighRecord")); } }
+    //{
+    //    get {
+    //        if (_jumpRecord == null) {
+    //            _jumpRecord = new GameArchiveTemplate("JumpHighRecord");
+    //        }
+    //        return _jumpRecord;
+    //    }
+    //}
+    #endregion
 
-    private static bool isHighRecord;
+    #region PushBallRecord
+    private static GameArchiveTemplate _pushBallRecord;
+    public static GameArchiveTemplate pushBallRecord { get { return _pushBallRecord ?? (_pushBallRecord = new GameArchiveTemplate("PushBallHighRecord")); } }
+
+    #endregion
+}
+
+
+public class GameArchiveTemplate {
+    
+    private  string key = "HighRecord";
+    private  GameRecord _record;
+
+    private  bool isHighRecord;
+
+    public GameArchiveTemplate(string key) {
+        this.key = key;
+        Debug.Log("GameArchiveTemplate.Key=" + key);
+        isHighRecord = false;
+    }
 
     /// <summary>
-    /// 获取跳绳记录
+    /// 获取记录
     /// </summary>
     /// <returns></returns>
-    public static GameRecord GetJumpRecord() {
-        if (_jumpRecord == null) {
-            string data = PlayerPrefs.GetString(Key_jumpHighRecord, "");
-            if (string.IsNullOrEmpty(data))
-                _jumpRecord = new GameRecord();
-            else
-                _jumpRecord = LitJsonUtils.ParseGameRecord(data);
-        }
-        return _jumpRecord;
-    }
-    /// <summary>
-    /// 保存跳绳记录
-    /// </summary>
-    private static void SaveJumpRecord()
+    public GameRecord GetRecord()
     {
-        PlayerPrefs.SetString(Key_jumpHighRecord, LitJsonUtils.ToGameRecordString(GetJumpRecord()));
+        if (_record == null)
+        {
+            string data = PlayerPrefs.GetString(key, "");
+            if (string.IsNullOrEmpty(data))
+                _record = new GameRecord();
+            else
+                _record = LitJsonUtils.ParseGameRecord(data);
+        }
+        return _record;
     }
     /// <summary>
-    /// 设置跳绳分数
+    /// 保存记录
+    /// </summary>
+    private void SaveRecord()
+    {
+        PlayerPrefs.SetString(key, LitJsonUtils.ToGameRecordString(GetRecord()));
+    }
+
+    public void CleanRecord() {
+        if (_record != null) {
+            _record.score = 0;
+            _record.star = 0;
+        }
+        PlayerPrefs.SetString(key, "");
+    }
+
+    /// <summary>
+    /// 设置分数
     /// </summary>
     /// <param name="score"></param>
-    public static void SetJumpScore(int score) {
-        if (GetJumpRecord().score < score)
+    public void SetScore(int score)
+    {
+        if (GetRecord().score < score)
         {
             isHighRecord = true;//本次游戏产生了最高分；
-            GetJumpRecord().score = score;
-            SaveJumpRecord();
+            GetRecord().score = score;
+            SaveRecord();
         }
     }
     /// <summary>
-    /// 设置跳绳星星
+    /// 设置星星
     /// </summary>
     /// <param name="star"></param>
-    public static void SetJumpStar(int star) {
-        GetJumpRecord().star = star;
-        SaveJumpRecord();
+    public void SetStar(int star)
+    {
+        GetRecord().star = star;
+        SaveRecord();
     }
     /// <summary>
     /// 累加星星数，最多加到5
     /// </summary>
     /// <param name="star"></param>
     /// <returns></returns>
-    public static bool AddJumpStar(int star) {
-        GetJumpRecord().star += star;
-        if (GetJumpRecord().star > 5)
+    public bool AddStar(int star)
+    {
+        GetRecord().star += star;
+        if (GetRecord().star > 5)
         {
-            SetJumpStar(5);
+            SetStar(5);
             return false;
         }
-        else {
-            SaveJumpRecord();
+        else
+        {
+            SaveRecord();
             return true;
         }
     }
     /// <summary>
-    /// 获取跳绳游戏最高分
+    /// 获取游戏最高分
     /// </summary>
     /// <returns></returns>
-    public static int GetJumpHighScore() {
-        return GetJumpRecord().score;
+    public int GetHighScore()
+    {
+        return GetRecord().score;
     }
     /// <summary>
-    /// 获取跳绳星星
+    /// 获取星星
     /// </summary>
     /// <returns></returns>
-    public static int GetJumpStar() {
-        return GetJumpRecord().star;
-    }
-
-    public static bool IsHighRecord()
+    public int GetStar()
     {
-        if (isHighRecord) return true;
-        else
-        {
-            return false;
-        }
+        return GetRecord().star;
     }
-    #endregion
 
+    public bool IsHighRecord()
+    {
+        return isHighRecord;
+    }
 }

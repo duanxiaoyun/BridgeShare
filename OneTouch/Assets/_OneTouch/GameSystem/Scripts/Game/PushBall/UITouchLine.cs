@@ -2,15 +2,25 @@
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using System.Collections;
 
+public enum TouchLineStatus
+{
+    Normal,
+    Line,
+    PartComplete,
+    SuccessComplete,
+    OutComplete,
+    FailureComplete
+}
 public class UITouchLine : UIBaseView
 {
     public bool interactable = true;
     public UICircle circlePrefab;
     public UILine linePrefab;
-    public Sprite spr_start;
-    public Sprite spr_middle;
-    public Sprite spr_end;
+    public NodeSkin skin_start;
+    public NodeSkin skin_middle;
+    public NodeSkin skin_end;
     public CanvasGroup canvasGroup;
     public float lifetime = 5;
     public float currentLifeTime;
@@ -29,15 +39,25 @@ public class UITouchLine : UIBaseView
     /// </summary>
     /// <value>The real radius.</value>
     public float realRadius { get { return circleRadius + circlePadding; } }
-    private bool isTouch;
+    public bool isTouch { get; private set; }
     private int currentTouchCircleId = -1;
     /// <summary>
-    /// 连线是否已经结束。 true：连线成功  false：连线失败
+    /// 连线状态。
     /// </summary>
-    public UnityAction<bool,float,Vector2> onComplete;
+    public UnityAction<TouchLineStatus, ScoreType, int> onComplete;
+    public UnityAction<TouchLineStatus, UITouchLine,UICircle, Vector2> onStartClickPosition;
+    public UnityAction onNodeDestroy;
+
     public float usedTime { get { return lifetime - currentLifeTime + clickTime; } }
     private float clickTime=0;
     private Tween tween;
+
+    public TouchLineStatus lineStatus { get; private set; }
+    public UICircle lastTouchCircle;
+    public float leftSide=0;
+    public ScoreType scoreType { get; private set; }
+    float lastCirclePosX;
+
 
     // Use this for initialization
     void Start()
@@ -48,6 +68,8 @@ public class UITouchLine : UIBaseView
         currentLifeTime = lifetime;
     }
 
+    private Vector2 pos;
+    public float speed;
     private void Update()
     {
         if (interactable)
@@ -56,23 +78,40 @@ public class UITouchLine : UIBaseView
             {
 #if UNITY_EDITOR
                 if (!Input.anyKey)
+                {
 #elif UNITY_ANDROID || UNITY_IOS
-                if(Input.touches.Length == 0)
+                if(Input.touches.Length == 0){
 #else
-                if(!Input.anyKey)
+                if(!Input.anyKey){
 #endif
                     InitTouch();
+                    if (lineStatus == TouchLineStatus.Line && lastTouchCircle != null)
+                    {
+                        lineStatus = TouchLineStatus.PartComplete;
+                        InvokeComplete(lineStatus, lastTouchCircle.id);
+                    }
+                }
             }
-            currentLifeTime -= Time.deltaTime;
-            if (currentLifeTime < 1 && tween == null)
+            //currentLifeTime -= Time.deltaTime;
+            //if (currentLifeTime < 1 && tween == null)
+            //{
+            //    tween = canvasGroup.DOFade(0, 1);
+            //}
+            //else if (currentLifeTime < 0)
+            //{
+            //    tween = null;
+            //    //Debug.Log("Failure");
+            //    lineStatus = TouchLineStatus.Failure;
+            //    InvokeComplete(lineStatus, circleList[0].rectTransform.anchoredPosition, circleList[0].id);
+            //}
+
+            pos = rectTransform.anchoredPosition;
+            pos.x -= Time.deltaTime * speed;
+            rectTransform.anchoredPosition = pos;
+            if (pos.x < leftSide - lastCirclePosX && lineStatus!= TouchLineStatus.OutComplete)
             {
-                tween = canvasGroup.DOFade(0, 1);
-            }
-            else if (currentLifeTime < 0)
-            {
-                tween = null;
-                //Debug.Log("Failure");
-                InvokeComplete(false, circleList[0].rectTransform.anchoredPosition);
+                lineStatus = TouchLineStatus.OutComplete;
+                InvokeComplete(lineStatus, 0);
             }
         }
     }
@@ -99,6 +138,7 @@ public class UITouchLine : UIBaseView
             lineList.Add(lastLine);
         }
         lastCircle = CreateCircle(circleCount - 1,lastLine.endPoint);
+        lastCirclePosX = lastCircle.center.x + lastCircle.radius;
         circleList.Add(lastCircle);
     }
 
@@ -106,8 +146,8 @@ public class UITouchLine : UIBaseView
         UICircle circle = Instantiate(circlePrefab) as UICircle;
         circle.rectTransform.SetParent(rectTransform, false);
         circle.SetActive(true);
-        circle.SetRadius(realRadius);
-        circle.SetPosition(pos);
+        circle.radius = realRadius;
+        circle.center = pos;
         circle.id = index;
         circle.name = string.Format("Circle_{0}",index);
         circle.onStartCircle = OnStartCircle;
@@ -115,15 +155,15 @@ public class UITouchLine : UIBaseView
         circle.onExitCircle = OnExitCircle;
         if (index == 0)
         {
-            circle.SetSprite(spr_start);
+            circle.SetNode(skin_start);
         }
         else if (index == circleCount - 1)
         {
-            circle.SetSprite(spr_end);
+            circle.SetNode(skin_end);
         }
         else
         {
-            circle.SetSprite(spr_middle);
+            circle.SetNode(skin_middle);
         }
         return circle;
     }
@@ -144,10 +184,22 @@ public class UITouchLine : UIBaseView
     /// </summary>
     /// <param name="circle">Circle.</param>
     /// <param name="time">Time.</param>
-    void OnStartCircle(UICircle circle, float time)
+    void OnStartCircle(UICircle circle, float time, Vector2 position)
     {
         //只有从点击第一个圆，才能开始连线
         isTouch = circle.id==0;
+        lineStatus = isTouch ? TouchLineStatus.Line : TouchLineStatus.FailureComplete;
+        if (onStartClickPosition != null)
+        {
+            onStartClickPosition(lineStatus,this, circle, position);
+        }
+        if (!isTouch)
+        {
+            InvokeComplete(lineStatus, 0);
+        }
+        
+
+        //Debug.Log("OnStartCircle:" + circle.name);
     }
 
     /// <summary>
@@ -155,28 +207,39 @@ public class UITouchLine : UIBaseView
     /// </summary>
     /// <param name="circle">Circle.</param>
     /// <param name="time">Time.</param>
-    void OnEnterCircle(UICircle circle, float time)
+    void OnEnterCircle(UICircle circle, float time, Vector2 position)
     {
+        //Debug.Log("OnEnterCircle:" + circle.name);
         if (!interactable)
             return;
         if (isTouch)
         {
+            lastTouchCircle = circle;
+            circle.SetGrayEffect();
             if (circle.id - currentTouchCircleId == 1)
             {
                 if (circle.id == 0)
+                {
                     clickTime = currentLifeTime;
-                circle.img_circle.color = Color.red;
+                }
                 currentTouchCircleId = circle.id;
                 if (circle.id == circleCount - 1)
                 {
                     InitTouch();
                     //Debug.Log("Success");
-                    InvokeComplete(true, circle.rectTransform.anchoredPosition);
+                    lineStatus = TouchLineStatus.SuccessComplete;
+                    InvokeComplete(lineStatus, circle.id);
                 }
-            }else{
+                else {
+                    lineStatus = TouchLineStatus.Line;
+                    //InvokeComplete(lineStatus, circle.id);
+                }
+            }
+            else{
                 InitTouch();
                 //Debug.Log("Failure");
-                InvokeComplete(false, circle.rectTransform.anchoredPosition);
+                lineStatus = TouchLineStatus.PartComplete;
+                InvokeComplete(lineStatus, circle.id);
             }
         }
     }
@@ -186,19 +249,36 @@ public class UITouchLine : UIBaseView
     /// </summary>
     /// <param name="circle">Circle.</param>
     /// <param name="time">Time.</param>
-    void OnExitCircle(UICircle circle, float time)
+    void OnExitCircle(UICircle circle, float time, Vector2 position)
     {
         //if (!interactable)
             //return;
-        circle.img_circle.color = Color.white;
+        //circle.SetNormalEffect();
+
+        //Debug.Log("OnExitCircle:" + circle.name);
     }
 
-    void InvokeComplete(bool isSuccess,Vector2 pos)
+    public void SetScoreType(ScoreType type)
     {
-        interactable = false;
+        scoreType = type;
+    }
+
+    void InvokeComplete(TouchLineStatus status,int index)
+    {
+        interactable = (status == TouchLineStatus.Normal || status == TouchLineStatus.Line);
         if (onComplete != null)
-            onComplete(isSuccess, usedTime, pos);
-        //可改成延迟销毁
+            onComplete(status, scoreType, index);
+        if (!interactable)
+        {
+            StartCoroutine(WaitDestroy(0.4f));
+        }
+    }
+
+    protected IEnumerator WaitDestroy(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (onNodeDestroy != null)
+            onNodeDestroy();
         Destroy(gameObject);
     }
 }
