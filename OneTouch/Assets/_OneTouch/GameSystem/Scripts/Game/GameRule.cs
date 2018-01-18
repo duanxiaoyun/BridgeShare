@@ -78,29 +78,29 @@ public class GameRule  {
     #region PushBallRule
     public static ScoreType GetPushBallScoreType(bool isSuccess, float distance)
     {
-
-        //Debug.Log("distance:" + distance);
-        //ScoreType type = ScoreType.Miss;
-        //if (isSuccess)
-        //{
-        //    if (distance <= 1)
-        //    {
-        //        type = ScoreType.Perfect;
-        //    }
-        //    else if (distance <= 2)
-        //    {
-        //        type = ScoreType.Great;
-        //    }
-        //    else if (distance <= 3)
-        //    {
-        //        type = ScoreType.Nice;
-        //    }
-        //    else if (distance <= 4)
-        //    {
-        //        type = ScoreType.Bad;
-        //    }
-        //}
-        return isSuccess? ScoreType.Perfect : ScoreType.Miss;
+        Debug.Log("distance:" + distance);
+        ScoreType type = ScoreType.Miss;
+        if (isSuccess)
+        {
+            if (distance <= 130)
+            {
+                type = ScoreType.Perfect;
+            }
+            else if (distance > 130 && distance <= 160)
+            {
+                type = ScoreType.Great;
+            }
+            else if (distance > 160 && distance <= 220)
+            {
+                type = ScoreType.Nice;
+            }
+            else if (distance > 220 && distance <= 230)
+            {
+                type = ScoreType.Bad;
+            }
+        }
+        //return isSuccess? ScoreType.Perfect : ScoreType.Miss;
+        return isSuccess ? type : ScoreType.Miss;
     }
 
     public static GameRuleData GetPushBallRuleData(ScoreType type,int count)

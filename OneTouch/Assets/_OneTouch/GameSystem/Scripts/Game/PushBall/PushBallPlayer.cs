@@ -7,7 +7,7 @@ public class PushBallPlayer : GameBasePlayer
 {
     public Image ballImage;
     public GameBGMove backGround;
-    
+
     bool isRunning;
 
     // Use this for initialization
@@ -34,36 +34,29 @@ public class PushBallPlayer : GameBasePlayer
     {
         switch (type){
             case ScoreType.Perfect:
-                //Debug.Log("Perfect ");
                 playerAnim.SetBool("IsRun", true);
                 
                 StartRunAnim(5f);
 
                 break;
             case ScoreType.Great:
-                //Debug.Log(" Great ");
                 playerAnim.SetBool("IsRun", true);
                 StartRunAnim(5f);
 
                 break;
             case ScoreType.Nice:
-                //Debug.Log(" Nice ");
                 playerAnim.SetBool("IsRun", true);
                 StartRunAnim(4f);
 
                 break;
             case ScoreType.Bad:
-                //Debug.Log(" Bad ");
-
                 StartRunAnim(1f);
 
                 break;
             case ScoreType.Miss:
                 //Debug.Log("Miss ");
                 isRunning = false;
-
                 playerAnim.SetTrigger("Miss");
-
                 break;
         }
     }
@@ -83,7 +76,5 @@ public class PushBallPlayer : GameBasePlayer
             isRunning = false;
         }
     }
-
-   
 
 }

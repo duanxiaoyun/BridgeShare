@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PushBallController : MonoBehaviour
 {
     public Canvas canvas;
     public GameController gameController;
+    public GameBGMove backGround;
     public GameBGMiss bgMiss;
     public RectTransform rect_playerParent;
     public PushBallPlayer player;
@@ -15,15 +17,17 @@ public class PushBallController : MonoBehaviour
     public int currentNodeCount = 0;
     public float nextTime = 0;
 
+    public Text ScoreTimes;
 
     private void Awake()
     {
         //GameArchive.user.coin = 100;
         //GameArchive.user.name = "PlayerName";
-        //GameArchive.user.sex = Sex.Boy;
+        //GameArchive.user.sex = Sex.Girl;
         //GameArchive.SaveUser();
         player = PushBallPlayer.LoadPlayer(LevelName.PushBall, GameArchive.user.sex).GetComponent<PushBallPlayer>();
-        player.rectTransform.SetParent(rect_playerParent, false);
+        player.rectTransform.SetParent(rect_playerParent, false); //true?
+        player.backGround = backGround;
     }
 
     // Use this for initialization
@@ -75,6 +79,13 @@ public class PushBallController : MonoBehaviour
             }
         }
         ScoreType type = GameRule.GetPushBallScoreType(isSuccess, distance);
+
+        if(type==ScoreType.Perfect) ScoreTimes.text = "X 50"; 
+        else if (type == ScoreType.Great) ScoreTimes.text = "X 40";
+        else if(type == ScoreType.Nice) ScoreTimes.text ="X 30";
+        else if(type == ScoreType.Bad) ScoreTimes.text = "X 20";
+        else if(type == ScoreType.Miss) ScoreTimes.text = "X 0";
+
         parent.SetScoreType(type);
         circle.ShowResult(type);
     }

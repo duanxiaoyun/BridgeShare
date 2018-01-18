@@ -125,6 +125,7 @@
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\PushBall\UITouchLine.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\RecordUI.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\ResultUI.cs" />
+    <Compile Include="Assets\_OneTouch\GameSystem\Scripts\Game\ShowCharacter.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameData\LevelManager.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameData\Model.cs" />
     <Compile Include="Assets\_OneTouch\GameSystem\Scripts\GameData\SplashManager.cs" />

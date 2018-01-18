@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainController : MonoBehaviour {
     public UIMainMenuItem menu_user;
@@ -17,24 +18,36 @@ public class MainController : MonoBehaviour {
     public UIMainMenuItem menu_mainGame;
     public UIMainMenuItem menu_propGame;
 
+    public GameObject charactor_Panel;
+    public Button exit_Panel;
+
 
 	// Use this for initialization
 	void Start () {
 
-        //设置屏幕自动旋转， 并置支持的方向
-        Screen.orientation = ScreenOrientation.AutoRotation;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
+        ////设置屏幕自动旋转， 并置支持的方向
+        //Screen.orientation = ScreenOrientation.AutoRotation;
+        //Screen.autorotateToLandscapeLeft = true;
+        //Screen.autorotateToLandscapeRight = true;
+        //Screen.autorotateToPortrait = false;
+        //Screen.autorotateToPortraitUpsideDown = false;
 
         menu_mainGame.button.onClick.AddListener(LevelManager.GotoGameMenu);
         menu_propGame.button.onClick.AddListener(LevelManager.GotoBonusGames);
-       
+
+        menu_character.button.onClick.AddListener(ShowSelectPanel);
+
+        exit_Panel.onClick.AddListener(HideSelectPanel);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void ShowSelectPanel()
+    {
+        LevelManager.ShowSelectPanel(charactor_Panel);
+    }
+
+    public void HideSelectPanel()
+    {
+        LevelManager.HideSelectPanel(charactor_Panel);
+    }
+
 }

@@ -29,6 +29,17 @@ public class LevelManager  {
         SceneManager.LoadScene(level.ToString());
     }
 
+    public static void ShowSelectPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
+
+    public static void HideSelectPanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+   
+
     public static void GotoMain()
     {
         GotoLevel(LevelName.Main);
@@ -57,4 +68,6 @@ public class LevelManager  {
     {
         GotoLevel(LevelName.BonusGames);
     }
+
+
 }
