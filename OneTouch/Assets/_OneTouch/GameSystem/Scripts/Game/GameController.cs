@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
     public GameBGMove background;
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject[] gameEffs;
 
+
     // Use this for initialization
     IEnumerator Start () {
         gameUI.btn_pause.onClick.AddListener(PauseGame);
@@ -29,6 +31,8 @@ public class GameController : MonoBehaviour {
         playerHP.onPlayerDead += OnPlayerDead;
         playerHP.onHPChanged += OnHPChanged;
         doubleScoreTime = 0;
+
+        gameUI.transform.GetChild(2).gameObject.GetComponent<Image>().overrideSprite = (Sprite)Resources.Load("User_"+ GameArchive.user.sex.ToString(), typeof(Sprite));
 
         gameEffs[0].SetActive(true);
         yield return new WaitForSeconds(3.25f);

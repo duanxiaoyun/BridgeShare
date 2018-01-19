@@ -1317,7 +1317,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ba2e8922dbe9e45baa95252267c4e64f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4301d4fce02cd9645b5089874829f812, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5230,6 +5230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   girl: {fileID: 378358966}
   boy: {fileID: 1459714512}
+  menu_user: {fileID: 1086738057}
 --- !u!1 &1697044263
 GameObject:
   m_ObjectHideFlags: 0

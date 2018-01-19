@@ -543,7 +543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1247803354443004
 GameObject:
   m_ObjectHideFlags: 1
@@ -10385,7 +10385,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1403585639
+  randomSeed: 870617253
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10828,7 +10828,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 2
+    type: 0
     angle: 15.81
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -10850,7 +10850,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 100
+      value: 50
       mode: 0
       spread: 0
       speed:
@@ -11027,8 +11027,8 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - time: 0
-      minCount: 30
-      maxCount: 30
+      minCount: 40
+      maxCount: 60
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
@@ -13652,7 +13652,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 293502103
+  randomSeed: 1739078026
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14095,7 +14095,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 2
+    type: 0
     angle: 15.81
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -14117,7 +14117,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 100
+      value: 50
       mode: 0
       spread: 0
       speed:
@@ -14294,8 +14294,8 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - time: 0
-      minCount: 30
-      maxCount: 30
+      minCount: 40
+      maxCount: 60
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
@@ -16919,7 +16919,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1445222146
+  randomSeed: -238877987
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17362,7 +17362,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 2
+    type: 0
     angle: 15.81
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -17384,7 +17384,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 100
+      value: 50
       mode: 0
       spread: 0
       speed:
@@ -17561,8 +17561,8 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - time: 0
-      minCount: 30
-      maxCount: 30
+      minCount: 40
+      maxCount: 60
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
@@ -26720,7 +26720,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1728138978
+  randomSeed: 158703529
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -29987,7 +29987,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -798754566
+  randomSeed: -908418261
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -38572,7 +38572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: -12}
+  m_AnchoredPosition: {x: -922, y: -297}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224440245661059648
@@ -38686,7 +38686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -386, y: 144}
+  m_AnchoredPosition: {x: -1143, y: 241}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224475471296947670
@@ -39969,7 +39969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 486, y: -190}
+  m_AnchoredPosition: {x: -70, y: -291}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224955200316276290

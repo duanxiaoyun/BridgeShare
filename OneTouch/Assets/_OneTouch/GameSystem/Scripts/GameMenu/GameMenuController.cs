@@ -17,6 +17,10 @@ public class GameMenuController : MonoBehaviour {
             if (gameDataList[i].sceneName == LevelName.Jump) {
                 gameDataList[i].starNum = GameArchive.jumpRecord.GetStar();
             }
+            if (gameDataList[i].sceneName == LevelName.PushBall)
+            {
+                gameDataList[i].starNum = GameArchive.pushBallRecord.GetStar();
+            }
             SetGameItem(gameUIList[i],gameDataList[i]);
         }
 	}

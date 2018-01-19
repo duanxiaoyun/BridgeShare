@@ -121,7 +121,7 @@ public class GameRule  {
                 ruleData.SetData(ScoreType.Bad, 0, 0);
                 break;
             default:
-                ruleData.SetData(ScoreType.Miss, -10, -10);
+                ruleData.SetData(ScoreType.Miss, -10, -40);
                 break;
         }
         ruleData.score *= count;

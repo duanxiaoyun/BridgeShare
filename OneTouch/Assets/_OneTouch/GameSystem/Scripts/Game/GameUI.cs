@@ -28,6 +28,11 @@ public class GameUI : UIBaseView {
             starUI.SetStarNum(count);
     }
 
+    public void SetUserImage()
+    {
+        //img_avatar.GetComponent<Image>().sprite = Resources.Load
+    }
+
     public void SetTime(float time){
         txt_time.text = Mathf.Ceil(time).ToString();
         if (timeUI != null)

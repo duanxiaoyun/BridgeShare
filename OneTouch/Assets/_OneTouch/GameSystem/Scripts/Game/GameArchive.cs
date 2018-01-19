@@ -39,7 +39,7 @@ public class GameArchive {
     #region JumpRecord
 
     private static GameArchiveTemplate _jumpRecord;
-    public static GameArchiveTemplate jumpRecord { get { return _pushBallRecord ?? (_pushBallRecord = new GameArchiveTemplate("JumpHighRecord")); } }
+    public static GameArchiveTemplate jumpRecord { get { return _jumpRecord ?? (_jumpRecord = new GameArchiveTemplate("JumpHighRecord")); } }
     //{
     //    get {
     //        if (_jumpRecord == null) {
