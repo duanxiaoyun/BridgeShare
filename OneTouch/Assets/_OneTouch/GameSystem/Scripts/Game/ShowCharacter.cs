@@ -5,26 +5,23 @@ using UnityEngine.UI;
 
 public class ShowCharacter : MonoBehaviour {
 
-    public GameObject girl;
-    public GameObject boy;
+    public Image character_Sex;
 
     public UIMainMenuItem menu_user;
 
     // Use this for initialization
     void Start () {
-        girl.SetActive(false);
-        boy.SetActive(false);
+
+        character_Sex.overrideSprite = (Sprite)Resources.Load("idle_" + GameArchive.user.sex.ToString(), typeof(Sprite));
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
+        character_Sex.overrideSprite = (Sprite)Resources.Load("idle_" + GameArchive.user.sex.ToString(), typeof(Sprite));
+    }
 
     public void ShowGirl()
     {
-        girl.SetActive(true);
-        boy.SetActive(false);
         menu_user.transform.GetChild(1).gameObject.GetComponent<Image>().overrideSprite = (Sprite)Resources.Load("User_Girl", typeof(Sprite));
         GameArchive.user.sex = Sex.Girl;
         GameArchive.SaveUser();
@@ -32,8 +29,6 @@ public class ShowCharacter : MonoBehaviour {
 
     public void ShowBoy()
     {
-        boy.SetActive(true);
-        girl.SetActive(false);
         menu_user.transform.GetChild(1).gameObject.GetComponent<Image>().overrideSprite = (Sprite)Resources.Load("User_Boy", typeof(Sprite));
         GameArchive.user.sex = Sex.Boy;
         GameArchive.SaveUser();

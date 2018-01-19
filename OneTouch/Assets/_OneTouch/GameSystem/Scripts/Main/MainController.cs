@@ -21,9 +21,10 @@ public class MainController : MonoBehaviour {
     public GameObject charactor_Panel;
     public Button exit_Panel;
 
+    public Image characterIdle;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         ////设置屏幕自动旋转， 并置支持的方向
         //Screen.orientation = ScreenOrientation.AutoRotation;
@@ -31,6 +32,8 @@ public class MainController : MonoBehaviour {
         //Screen.autorotateToLandscapeRight = true;
         //Screen.autorotateToPortrait = false;
         //Screen.autorotateToPortraitUpsideDown = false;
+        
+        characterIdle.overrideSprite = (Sprite)Resources.Load("idle_"+GameArchive.user.sex.ToString(),typeof(Sprite));
 
         menu_mainGame.button.onClick.AddListener(LevelManager.GotoGameMenu);
         menu_propGame.button.onClick.AddListener(LevelManager.GotoBonusGames);
