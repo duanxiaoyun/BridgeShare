@@ -69,5 +69,10 @@ public class LevelManager  {
         GotoLevel(LevelName.BonusGames);
     }
 
+    public static void GameEnd()
+    {
+        Debug.Log("GAME OVER");
+        Application.Quit();
+    }
 
 }

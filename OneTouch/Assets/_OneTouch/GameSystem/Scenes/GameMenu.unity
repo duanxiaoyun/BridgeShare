@@ -426,6 +426,36 @@ Prefab:
       propertyPath: m_Text
       value: "\uCD9C\uC804"
       objectReference: {fileID: 0}
+    - target: {fileID: 114923666453914590, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918765847}
+    - target: {fileID: 114923666453914590, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 114923666453914590, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: b5cdbdc719c96284ea1a295ca2940fe8, type: 3}
+    - target: {fileID: 114616324688988894, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918765847}
+    - target: {fileID: 114616324688988894, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 114616324688988894, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: b5cdbdc719c96284ea1a295ca2940fe8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b9e79d9932eb234e83887ba8e7709e9, type: 2}
   m_IsPrefabParent: 0
@@ -482,6 +512,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1962976197}
     m_Modifications:
+    - target: {fileID: 114575409047363022, guid: bbb2a7e24088a4da89668c45de5c9e43,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224156660503797662, guid: bbb2a7e24088a4da89668c45de5c9e43,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -722,6 +757,21 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114575409047363022, guid: bbb2a7e24088a4da89668c45de5c9e43,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575409047363022, guid: bbb2a7e24088a4da89668c45de5c9e43,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575409047363022, guid: bbb2a7e24088a4da89668c45de5c9e43,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918765841}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbb2a7e24088a4da89668c45de5c9e43, type: 2}
   m_IsPrefabParent: 0
@@ -1169,7 +1219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721028377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1918765847}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b5cdbdc719c96284ea1a295ca2940fe8,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &721028377
@@ -1524,6 +1586,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114923666453914590, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918765847}
+    - target: {fileID: 114616324688988894, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918765847}
     - target: {fileID: 224509686632137426, guid: 0b9e79d9932eb234e83887ba8e7709e9,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -1674,6 +1746,16 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114923666453914590, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: b5cdbdc719c96284ea1a295ca2940fe8, type: 3}
+    - target: {fileID: 114616324688988894, guid: 0b9e79d9932eb234e83887ba8e7709e9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: b5cdbdc719c96284ea1a295ca2940fe8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b9e79d9932eb234e83887ba8e7709e9, type: 2}
   m_IsPrefabParent: 0
@@ -1741,6 +1823,7 @@ GameObject:
   - component: {fileID: 1918765843}
   - component: {fileID: 1918765842}
   - component: {fileID: 1918765846}
+  - component: {fileID: 1918765847}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1852,6 +1935,86 @@ MonoBehaviour:
     sceneName: 4
     icon: {fileID: 21300000, guid: 9f93ad93bb4fe2e4fa6ba70cddead0cc, type: 3}
     starNum: 0
+--- !u!82 &1918765847
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918765841}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1937709111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +2082,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA58 \uAC8C\uC784"
+  m_Text: "\uBA54\uC778 \uAC8C\uC784"
 --- !u!222 &1937709114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2291,7 +2454,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 762869451}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9331652
+  m_Size: 0.8070618
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -19,12 +19,22 @@ public class PushBallController : MonoBehaviour
 
     public Text ScoreTimes;
 
+    AudioSource pushBallSounds;
+
+    public AudioClip runSound;
+    public AudioClip countSound;
+    public AudioClip shotSound;
+    public AudioClip popSound;
+
     private void Awake()
     {
         //GameArchive.user.coin = 100;
         //GameArchive.user.name = "PlayerName";
         //GameArchive.user.sex = Sex.Girl;
         //GameArchive.SaveUser();
+
+        pushBallSounds = GetComponent<AudioSource>();
+
         player = PushBallPlayer.LoadPlayer(LevelName.PushBall, GameArchive.user.sex).GetComponent<PushBallPlayer>();
         player.rectTransform.SetParent(rect_playerParent, false); //true?
         player.backGround = backGround;
@@ -32,6 +42,11 @@ public class PushBallController : MonoBehaviour
 
     // Use this for initialization
     void Start () {
+
+        FindObjectOfType<BgSound>().GetComponent<AudioSource>().mute = true;
+
+        StartCoroutine(CountSound());
+
         gameController.highRecord = GameArchive.pushBallRecord.GetRecord();
         gameController.UpdateStar();
         gameController.onGameOver += OnGameOver;
@@ -80,14 +95,15 @@ public class PushBallController : MonoBehaviour
         }
         ScoreType type = GameRule.GetPushBallScoreType(isSuccess, distance);
 
-        if(type==ScoreType.Perfect) ScoreTimes.text = "X 50"; 
+        if (type == ScoreType.Perfect) ScoreTimes.text = "X 50";
         else if (type == ScoreType.Great) ScoreTimes.text = "X 40";
-        else if(type == ScoreType.Nice) ScoreTimes.text ="X 30";
-        else if(type == ScoreType.Bad) ScoreTimes.text = "X 20";
-        else if(type == ScoreType.Miss) ScoreTimes.text = "X 0";
+        else if (type == ScoreType.Nice) ScoreTimes.text = "X 30";
+        else if (type == ScoreType.Bad) ScoreTimes.text = "X 20";
+        else if (type == ScoreType.Miss) ScoreTimes.text = "X 0";
 
         parent.SetScoreType(type);
         circle.ShowResult(type);
+        pushBallSounds.PlayOneShot(popSound);
     }
 
     void OnComplete(TouchLineStatus status, ScoreType scoreType, int index){
@@ -97,11 +113,13 @@ public class PushBallController : MonoBehaviour
             //nextTime = 0;
             //Debug.Log(type + "  :  " + score + "  :  " + usedTime);
             GameRuleData result = GameRule.GetPushBallRuleData(scoreType, index+1);
+            pushBallSounds.PlayOneShot(popSound);
             gameController.CalculateScore(result);
             player.OnTouchLineComplete(status, scoreType);
             if (status == TouchLineStatus.OutComplete)
                 bgMiss.ShowMiss();
-
+            pushBallSounds.PlayOneShot(runSound);
+            
         }
     }
     
@@ -125,5 +143,14 @@ public class PushBallController : MonoBehaviour
         }
 
         GameArchive.pushBallRecord.SetScore(gameController.gameData.totalScore);
+    }
+
+    IEnumerator CountSound()
+    {
+        pushBallSounds.PlayOneShot(countSound);
+        yield return new WaitForSeconds(2);
+        pushBallSounds.Stop();
+        pushBallSounds.PlayOneShot(shotSound);
+        pushBallSounds.PlayDelayed(1f);
     }
 }

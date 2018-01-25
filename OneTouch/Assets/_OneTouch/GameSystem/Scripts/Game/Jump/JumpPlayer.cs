@@ -1,7 +1,6 @@
 ﻿
 public class JumpPlayer : GameBasePlayer
 {
-    
     public void OnNodeComplete(bool isSuccess, ScoreType type){
         switch (type)
         {

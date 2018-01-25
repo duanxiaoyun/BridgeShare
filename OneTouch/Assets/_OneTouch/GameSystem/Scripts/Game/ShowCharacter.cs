@@ -9,9 +9,10 @@ public class ShowCharacter : MonoBehaviour {
 
     public UIMainMenuItem menu_user;
 
+    public Button exit_button;
+
     // Use this for initialization
     void Start () {
-
         character_Sex.overrideSprite = (Sprite)Resources.Load("idle_" + GameArchive.user.sex.ToString(), typeof(Sprite));
     }
 	

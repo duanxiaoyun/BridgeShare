@@ -8,10 +8,14 @@ public class GameMenuController : MonoBehaviour {
     //public Text txt_title;
     public List<UIGameSelectItem> gameUIList;
     public List<GameCategory> gameDataList;
+   
+    // Use this for initialization
+    void Start () {
 
-	// Use this for initialization
-	void Start () {
+        FindObjectOfType<BgSound>().GetComponent<AudioSource>().mute = false;
+
         //gameDataList[0].starNum = GameArchive.GetJumpStar();
+
         btn_back.onClick.AddListener(OnClickBack);
         for (int i = 0; i < gameDataList.Count;i++){
             if (gameDataList[i].sceneName == LevelName.Jump) {

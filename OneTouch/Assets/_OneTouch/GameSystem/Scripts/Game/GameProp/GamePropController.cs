@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GamePropController : MonoBehaviour {
     public RectTransform content;
@@ -9,6 +10,9 @@ public class GamePropController : MonoBehaviour {
     public int maxCount = 5;
     public int currentCount = 0;
     public float nextTime = 0;
+
+    public Image hp_plus;
+    public Image score_times;
 
     public List<Sprite> propSpriteList;
 
@@ -45,7 +49,7 @@ public class GamePropController : MonoBehaviour {
         GameProp temp = Instantiate(prefab) as GameProp;
         temp.rectTransform.SetParent(content, false);
         temp.rectTransform.anchoredPosition = pos;
-        GamePropType type = Random.Range(0, 100) > 80 ? GamePropType.Water : GamePropType.Bread;
+        GamePropType type = Random.Range(0, 100) > 50 ? GamePropType.Water : GamePropType.Bread;
         temp.Set(type, propSpriteList[(int)type]);
         temp.onPickProp = OnPickProp;
         currentCount++;
@@ -55,15 +59,28 @@ public class GamePropController : MonoBehaviour {
         switch (type) {
             case GamePropType.Water:
                 if (onPickWater != null) {
+                    //score_times.gameObject.SetActive(true);
+                    StartCoroutine(WaitSomeSeconds(3.0f, score_times));
+                    //score_times.gameObject.SetActive(false);
                     onPickWater(GameRule.GetWaterDoubleScoreTime());
                 }
                 break;
             case GamePropType.Bread:
                 if (onPickBread != null)
                 {
+                    //hp_plus.gameObject.SetActive(true);
+                    StartCoroutine(WaitSomeSeconds(3.0f,hp_plus));
+                    //hp_plus.gameObject.SetActive(false);
                     onPickBread(GameRule.GetBreadHPCount());
                 }
                 break;
         }
+    }
+
+    IEnumerator WaitSomeSeconds(float time,Image image)
+    {
+        image.gameObject.SetActive(true);
+        yield return new WaitForSeconds(time);
+        image.gameObject.SetActive(false);
     }
 }

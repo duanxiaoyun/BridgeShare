@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_OneTouch/GameSystem/Scenes/Jump.unity
     guid: dfeb03ba4805c466b945577ee77547ec
+  - enabled: 1
+    path: Assets/LongJump/Scene/FarJump.unity
+    guid: bd302c081ad93d7468224376c231e167

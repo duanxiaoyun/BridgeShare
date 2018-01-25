@@ -13,10 +13,28 @@ public class PauseUI : RecordUI {
     public Button btn_resume;
     public UnityAction<bool> onMusicToggle, onSoundToggle;
 
-    public GameTime gameTime;
+    public JumpController jumpController;
+    public PushBallController pushBallController;
 
-	// Use this for initialization
-	void Start () {
+    public GameTime gameTime;
+    AudioSource Sound;
+
+    //private void Awake()
+    //{
+      
+    //}
+
+    // Use this for initialization
+    void Start () {
+        if (LevelManager.currentLevel.ToString() == "PushBall")
+        {
+            Sound = pushBallController.GetComponent<AudioSource>();
+        }
+        else if (LevelManager.currentLevel.ToString() == "Jump")
+        {
+            Sound = jumpController.GetComponent<AudioSource>();
+        }
+
         btn_exit.onClick.AddListener(LevelManager.GotoGameMenu);
         tog_music.onValueChanged.AddListener(OnMusicToggle);
         tog_sound.onValueChanged.AddListener(OnSoundToggle);
@@ -31,6 +49,7 @@ public class PauseUI : RecordUI {
     void OnMusicToggle(bool isOn)
     {
         txt_music.text = isOn ? "켜짐" : "꺼짐";
+        Sound.mute = isOn ? false : true;
         if (onMusicToggle != null)
             onMusicToggle(isOn);
     }
@@ -40,5 +59,14 @@ public class PauseUI : RecordUI {
         txt_sound.text = isOn ? "켜짐" : "꺼짐";
         if (onSoundToggle != null)
             onSoundToggle(isOn);
+
+        //if (!isOn)
+        //{
+        //    jumpSound.Stop();
+        //}
+        //if (isOn)
+        //{
+        //    jumpSound.Play();
+        //}
     }
 }

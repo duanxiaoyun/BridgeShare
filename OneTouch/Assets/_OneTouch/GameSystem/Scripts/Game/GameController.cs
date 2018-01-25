@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour {
 
     public GameObject[] gameEffs;
 
-
     // Use this for initialization
     IEnumerator Start () {
         gameUI.btn_pause.onClick.AddListener(PauseGame);

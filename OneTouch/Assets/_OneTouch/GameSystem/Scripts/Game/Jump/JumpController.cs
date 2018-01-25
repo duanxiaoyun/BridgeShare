@@ -18,18 +18,34 @@ public class JumpController : MonoBehaviour {
     public float nextTime = 0;
     public List<NodeSkin> skinList;
 
+    AudioSource jumpSounds;
+
+    public AudioClip jumpSound;
+    public AudioClip countSound;
+    public AudioClip shotSound;
+    public AudioClip missSound;
+
+
     private void Awake()
     {
         //GameArchive.user.coin = 100;
         //GameArchive.user.name = "PlayerName";
         //GameArchive.user.sex = Sex.Boy;
         //GameArchive.SaveUser();
+        
+        jumpSounds = GetComponent<AudioSource>();
+
         player = JumpPlayer.LoadPlayer(LevelName.Jump,GameArchive.user.sex).GetComponent<JumpPlayer>();
         player.rectTransform.SetParent(rect_playerParent,false);
     }
 
     // Use this for initialization
     void Start () {
+
+        FindObjectOfType<BgSound>().GetComponent<AudioSource>().mute=true;
+
+        StartCoroutine(CountSound());
+
         bgClick.onClickBackground += OnClickBackground;
         propController.onPickWater += gameController.OnPickWater;
         propController.onPickBread += gameController.OnPickBread;
@@ -89,12 +105,14 @@ public class JumpController : MonoBehaviour {
             gameController.CalculateScore(result);
             node.ShowResult(result.type);
             player.OnNodeComplete(isSuccess, result.type);
+            jumpSounds.PlayOneShot(jumpSound);
         }
     }
 
     private void OnClickBackground()
     {
         player.PlayMiss();
+        jumpSounds.PlayOneShot(missSound);
         gameController.CalculateScore(GameRule.ClickJumpBackground());
     }
 
@@ -123,6 +141,15 @@ public class JumpController : MonoBehaviour {
         }
 
         GameArchive.jumpRecord.SetScore(gameController.gameData.totalScore);
+    }
+
+    IEnumerator CountSound()
+    {
+        jumpSounds.PlayOneShot(countSound);
+        yield return new WaitForSeconds(2);
+        jumpSounds.Stop();
+        jumpSounds.PlayOneShot(shotSound);
+        jumpSounds.PlayDelayed(1f);
     }
 
 }

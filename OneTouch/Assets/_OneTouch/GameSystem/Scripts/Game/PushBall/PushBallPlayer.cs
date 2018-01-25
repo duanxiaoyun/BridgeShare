@@ -35,27 +35,32 @@ public class PushBallPlayer : GameBasePlayer
         switch (type){
             case ScoreType.Perfect:
                 playerAnim.SetBool("IsRun", true);
-                
-                StartRunAnim(5f);
+                isRunning = true;
+                //StartRunAnim(5f);
 
                 break;
             case ScoreType.Great:
                 playerAnim.SetBool("IsRun", true);
-                StartRunAnim(5f);
+                isRunning = true;
+                //StartRunAnim(5f);
 
                 break;
             case ScoreType.Nice:
                 playerAnim.SetBool("IsRun", true);
-                StartRunAnim(4f);
+                isRunning = true;
+                //StartRunAnim(4f);
 
                 break;
             case ScoreType.Bad:
-                StartRunAnim(1f);
+                playerAnim.SetBool("IsRun", true);
+                isRunning = true;
+                //StartRunAnim(1f);
 
                 break;
             case ScoreType.Miss:
                 //Debug.Log("Miss ");
                 isRunning = false;
+                playerAnim.SetBool("IsRun", false);
                 playerAnim.SetTrigger("Miss");
                 break;
         }
