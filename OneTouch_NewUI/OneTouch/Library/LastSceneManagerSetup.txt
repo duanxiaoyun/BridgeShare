@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/_OneTouch/GameSystem/Scenes/Splash.unity
+  isLoaded: 1
+  isActive: 1
