@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_OneTouch/GameSystem/Scenes/Splash.unity
+- path: Assets/_OneTouch/GameSystem/Scenes/PushBall.unity
   isLoaded: 1
   isActive: 1
